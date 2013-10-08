@@ -1,0 +1,88 @@
+/* ---------------------- Dolphin nav ---------------------- */
+.time4bed-menu {
+	position: relative;
+	height: 43px;
+	font-size: 14px !important;
+	text-transform: uppercase;
+	background: #fff url("time4bed_bg.gif") repeat-x bottom left !important;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.time4bed-menu ul {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style-type: none;
+	width: auto;
+	float: left;
+}
+
+.time4bed-menu ul li {
+	display: block;
+	float: left;
+	margin: 0 2px !important;
+}
+
+.time4bed-menu ul li a {
+	display: block;
+	float: left;
+	color: #ffdab6 !important;
+	text-decoration: none !important;
+	padding: 0 0 0 25px !important;
+	height: 43px;
+	line-height: 50px;
+}
+
+.time4bed-menu ul li a span {
+	display: block;
+	float: left;
+	padding: 0 25px 0 0 !important;
+	height: 31px;
+	width: auto;
+}
+
+.time4bed-menu ul li a:hover {
+	color: #fff !important;
+}
+
+.time4bed-menu ul li a:hover span {
+	display: block;
+	cursor: pointer;
+}
+
+.time4bed-menu ul li a.tabs-selected,.time4bed-menu ul li a.tabs-selected:hover
+	{
+	color: #894d12 !important;
+	background: transparent url("time2bed_left-ON.gif") no-repeat top left
+		!important;
+}
+
+.time4bed-menu ul li a.tabs-selected span {
+	background: transparent url("time2bed_right-ON.gif") no-repeat top right
+		!important;
+	height: 43px;
+}
+
+/* ---------------------- END Dolphin nav ---------------------- */
+.time4bed-content {
+	padding: 0;
+	display: none;
+}
+
+.time4bed-block {
+	padding: 10px;
+}
+
+.time4bed-blocktitle {
+	margin-top: 0px;
+}
+
+.time4bed-blockcontent {
+	padding: 0px;
+	text-align: justify;
+}
+
+@media print {
+	.time4bed-content {
+		display: block !important;
+	}
+}

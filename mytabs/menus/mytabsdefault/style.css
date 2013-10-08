@@ -1,0 +1,67 @@
+.mytabsdefault-menu {
+	width: 100%;
+	padding: 0;
+	background: transparent;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+}
+
+.mytabsdefault-menu ul {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+
+.mytabsdefault-menu li {
+	display: inline;
+	padding: 0 !important;
+}
+
+.mytabsdefault-menu a {
+	float: left;
+	display: block;
+	text-decoration: none;
+	margin: 0 2px 0 0 !important; /*Margin between each menu item*/
+	padding: 10px 15px 11px 15px !important;
+	background-color: #C6C7C9 !important;
+	font-weight: bold;
+	border-bottom: 1px solid #ADB0B7;
+}
+
+.mytabsdefault-menu a:hover {
+	background-color: #F1F1F1 !important;
+	border-bottom: 1px solid #F1F1F1;
+	border-top: 1px solid #ADB0B7;
+}
+
+.mytabsdefault-menu a.tabs-selected { /*currently selected tab*/
+	background-color: #F1F1F1 !important;
+	border-bottom: 1px solid #F1F1F1;
+	border-top: 1px solid #ADB0B7;
+}
+
+.mytabsdefault-content {
+	display: none;
+	background: #fff url(mytabs_bg.jpg) top repeat-x;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mytabsdefault-block {
+	padding: 10px;
+}
+
+.mytabsdefault-blocktitle {
+	margin-top: 0px;
+}
+
+.mytabsdefault-blockcontent {
+	padding: 0px;
+	text-align: justify;
+}
+
+@media print {
+	.mytabsdefault-content {
+		display: block !important;
+	}
+}
