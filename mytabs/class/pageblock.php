@@ -85,13 +85,14 @@ class MytabsPageBlock extends XoopsObject
         include_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/block.php';
         $form = new MytabsBlockForm('Block', 'blockform', 'block.php');
         $form->createElements($this);
+
         return $form;
     }
 
     /**
      * Get pageblock and block objects on array form
      *
-     * @param string $format
+     * @param  string $format
      * @return array
      */
     function toArray($format = "s")
@@ -130,8 +131,8 @@ class MytabsPageBlock extends XoopsObject
     /**
      * Get content for this page block
      *
-     * @param int $unique
-     * @param bool $last
+     * @param  int   $unique
+     * @param  bool  $last
      * @return array
      */
     function render($template, $unique = 0)
@@ -172,6 +173,7 @@ class MytabsPageBlock extends XoopsObject
             $xoopsLogger->addBlock($this->block->getVar('name'), true, $bcachetime);
             $block['content'] = $template->fetch($tplName, $cacheid);
         }
+
         return $block;
     }
 }
@@ -189,7 +191,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
     /**
      * Get all blocks for a given tabid - or all tabids
      *
-     * @param int $tabid 0 = all tabids
+     * @param int   $tabid     0 = all tabids
      * @param array $locations optional parameter if you want to override auto-detection of location
      *
      * @return array
@@ -276,6 +278,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
         if($this->insert($block)) {
             return $block;
         }
+
         return false;
     }
 
@@ -302,9 +305,9 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
                 $row = $this->db->fetchRow($result);
                 $priority = $row[0]+1;
             }
+
             return $priority;
     }
-
 
     /**
      * Get all available blocks
@@ -324,6 +327,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
             while (list($id, $name, $title, $modname) = $this->db->fetchRow($result)) {
                 $ret[$id] = $modname . ' --> ' . $title . ' ('.$name.')';
             }
+
             return $ret;
     }
 
@@ -342,7 +346,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
             while (list($id, $name, $title) = $this->db->fetchRow($result)) {
                 $ret[$id] = $name . " --> " . $title;
             }
+
             return $ret;
     }
 }
-?>

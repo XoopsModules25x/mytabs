@@ -40,6 +40,7 @@ class MytabsPage extends XoopsObject
         include_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
         $form = new MytabsPageForm('Page', 'pageform', 'page.php');
         $form->createElements($this);
+
         return $form;
     }
 }
@@ -54,4 +55,3 @@ class MytabsPageHandler extends XoopsPersistableObjectHandler
         parent::__construct($db, "mytabs_page", 'MytabsPage', "pageid", "pagetitle");
     }
 }
-?>

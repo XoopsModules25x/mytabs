@@ -64,4 +64,3 @@ function mytabs_adminmenu($currentoption = 0, $breadcrumb = '')
     echo "<li id='" . $tblColors[2] . "'><a href=\"about.php\"\"><span>" . _MI_MYTABS_ADMMENU2 . "</span></a></li>\n";
     echo "</ul></div><div>&nbsp;</div>";
 }
-?>

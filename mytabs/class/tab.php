@@ -18,7 +18,6 @@
  * @version         $Id: tab.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-
 class MytabsTab extends XoopsObject
 {
     /**
@@ -59,6 +58,7 @@ class MytabsTab extends XoopsObject
         include_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/tab.php';
         $form = new MytabsTabForm('Tab', 'tabform', 'tab.php');
         $form->createElements($this);
+
         return $form;
     }
 
@@ -99,6 +99,7 @@ class MytabsTab extends XoopsObject
             $title = preg_replace('/\{pm_readed\}/', '', $title);
             $title = preg_replace('/\{pm_total\}/',  '', $title);
         }
+
         return trim($title);
     }
 
@@ -136,5 +137,3 @@ class MytabsTabHandler extends XoopsPersistableObjectHandler
         parent::__construct($db, "mytabs_tab", 'MytabsTab', "tabid", "tabtitle");
     }
 }
-
-?>

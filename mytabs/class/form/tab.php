@@ -68,4 +68,3 @@ class MytabsTabForm extends XoopsThemeForm
         $this->addElement($tray);
     }
 }
-?>

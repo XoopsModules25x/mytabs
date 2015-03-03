@@ -23,5 +23,3 @@ define("_MB_MYTABS_CREATEPAGEFIRST","Please create a page first!");
 
 define("_MB_MYTABS_HIDETABS","Hide tabs ?");
 define("_MB_MYTABS_HIDETABS_DSC","Set 'yes' to hide the tabs. This is only useful if you using delay>0");
-
-?>
