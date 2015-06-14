@@ -18,7 +18,6 @@
  * @version         $Id: menu.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-
 echo "<div class='adminfooter'>\n"
     ."  <div style='text-align: center;'>\n"
     ."    <a href='http://www.xoops.org' rel='external'><img src='{$pathIcon32}/xoopsmicrobutton.gif' alt='XOOPS' title='XOOPS'></a>\n"

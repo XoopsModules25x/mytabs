@@ -123,6 +123,7 @@ function b_mytabs_block_edit($options)
     $pages = $page_handler->getObjects($criteria);
     if(!$pages) {
         $form = "<a href='" . XOOPS_URL . "/modules/mytabs/admin/main.php'>" . _MB_MYTABS_CREATEPAGEFIRST . "</a>";
+
         return $form;
     }
 
@@ -204,4 +205,3 @@ function b_mytabs_block_edit($options)
 
     return $form;
 }
-?>

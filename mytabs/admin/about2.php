@@ -26,5 +26,3 @@ xoops_cp_header();
 $aboutObj = new MytabsAbout();
 $aboutObj->render();
 xoops_cp_footer();
-
-?>

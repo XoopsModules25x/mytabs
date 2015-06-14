@@ -54,6 +54,6 @@ function mytabs_blockShow($pageid, $tabid, $placement = '', $remove = '')
         $GLOBALS['xoopsLogger']->stopTime($logger_name);
 
     }
+
     return $block;
 }
-?>

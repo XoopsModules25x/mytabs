@@ -80,7 +80,6 @@ class MytabsBlockForm extends XoopsThemeForm
         $this->addElement($cachetime);
         $this->addElement(new XoopsFormRadioYN(_AM_MYTABS_CACHEBYURL, 'cachebyurl', $target->getVar('cachebyurl', 'e')));
 
-
         $note = new XoopsFormText(_AM_MYTABS_NOTE . ":","note",50, 255, $target->getVar('note', 'e'));
         $this->addElement($note);
 
@@ -104,4 +103,3 @@ class MytabsBlockForm extends XoopsThemeForm
         $this->addElement($tray);
     }
 }
-?>

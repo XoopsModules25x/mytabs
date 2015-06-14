@@ -22,12 +22,11 @@ require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/include/cp_header.
 include_once dirname(__FILE__) . '/functions.php';
 include_once dirname(dirname(__FILE__)) . '/include/functions.php';
 
-
 if ( file_exists($GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php'))){
         include_once $GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php');
         //return true;
     }else{
-        redirect_header("../../../admin.php", 5, _AM_MODULEADMIN_MISSING, false); 
+        redirect_header("../../../admin.php", 5, _AM_MODULEADMIN_MISSING, false);
         //return false;
     }
 
@@ -36,8 +35,6 @@ $pathIcon16 = '../'.$xoopsModule->getInfo('icons16');
 $pathIcon32 = '../'.$xoopsModule->getInfo('icons32');
 
 $myts =& MyTextSanitizer::getInstance();
-
-
 
 if ($xoopsUser) {
     $moduleperm_handler =& xoops_gethandler('groupperm');
@@ -51,8 +48,8 @@ if ($xoopsUser) {
 }
 
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-	include_once(XOOPS_ROOT_PATH."/class/template.php");
-	$xoopsTpl = new XoopsTpl();
+    include_once(XOOPS_ROOT_PATH."/class/template.php");
+    $xoopsTpl = new XoopsTpl();
 }
 
 $xoopsTpl->assign('pathImageIcon', $pathIcon16);

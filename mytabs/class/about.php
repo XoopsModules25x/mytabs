@@ -76,6 +76,7 @@ class MytabsAbout
     function sanitize($value)
     {
         $myts =& MyTextSanitizer::getInstance();
+
         return $myts->displayTarea($value, 1);
     }
 
@@ -146,5 +147,3 @@ class MytabsAbout
         $this->_tpl->display('db:mytabs_about.html');
     }
 }
-
-?>

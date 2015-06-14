@@ -110,5 +110,4 @@ $modversion['submit_feature'] = "http://www.xuups.com/modules/newbb";
 
 $modversion['author_word'] = "I want to dedicated this module to Gopala, the owner of this idea and first lines of code.";
 //$modversion['warning'] = "";
-
-?>
+;

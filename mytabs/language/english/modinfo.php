@@ -10,4 +10,3 @@ define("_MI_MYATBS_BNAME1","My Tabs Block");
 
 //2.21
 define("_MI_MYTABS_ADMMENU0","Home");
-
