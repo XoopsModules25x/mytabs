@@ -26,9 +26,9 @@ class MytabsPageBlock extends XoopsObject
     /**
      * constructor
      */
-    function MytabsPageBlock()
+    function __construct()
     {
-        $this->XoopsObject();
+        parent::__construct();
         $this->initVar("pageblockid", XOBJ_DTYPE_INT);
         $this->initVar('blockid', XOBJ_DTYPE_INT);
         $this->initVar('pageid', XOBJ_DTYPE_INT);
