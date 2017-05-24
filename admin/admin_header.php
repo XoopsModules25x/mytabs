@@ -34,7 +34,7 @@ global $xoopsModule;
 $pathIcon16 = '../'.$xoopsModule->getInfo('icons16');
 $pathIcon32 = '../'.$xoopsModule->getInfo('icons32');
 
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 if ($xoopsUser) {
     $moduleperm_handler =& xoops_gethandler('groupperm');

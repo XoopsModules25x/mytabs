@@ -75,7 +75,7 @@ class MytabsAbout
 
     function sanitize($value)
     {
-        $myts =& MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
 
         return $myts->displayTarea($value, 1);
     }
