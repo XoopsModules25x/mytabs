@@ -15,16 +15,15 @@
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: tab.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-defined('XOOPS_ROOT_PATH') or die("XOOPS root path not defined");
+// defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 class MytabsTabForm extends XoopsThemeForm
 {
-    function createElements($target)
+    public function createElements($target)
     {
         $this->addElement(new XoopsFormText(_AM_MYTABS_TITLE, 'tabtitle', 35, 255, $target->getVar('tabtitle', 'e')));
 
@@ -32,37 +31,37 @@ class MytabsTabForm extends XoopsThemeForm
 
         $this->addElement(new XoopsFormDateTime(_AM_MYTABS_ENDDATE, 'tabtodate', 15, $target->getVar('tabtodate', 'e')));
 
-        $always_select = new XoopsFormSelect(_AM_MYTABS_ALWAYSSHOW . ":","tabalwayson",$target->getVar('tabshowalways', 'e'));
-        $always_select->addOption("yes", _AM_MYTABS_ALWAYS);
-        $always_select->addOption("time", _AM_MYTABS_TIMEBASED);
-        $always_select->addOption("no", _AM_MYTABS_OFF);
+        $always_select = new XoopsFormSelect(_AM_MYTABS_ALWAYSSHOW . ':', 'tabalwayson', $target->getVar('tabshowalways', 'e'));
+        $always_select->addOption('yes', _AM_MYTABS_ALWAYS);
+        $always_select->addOption('time', _AM_MYTABS_TIMEBASED);
+        $always_select->addOption('no', _AM_MYTABS_OFF);
         $this->addElement($always_select);
 
-        $this->addElement(new XoopsFormText(_AM_MYTABS_PRIORITY . ":","tabpriority",4,5,$target->getVar('tabpriority', 'e')));
+        $this->addElement(new XoopsFormText(_AM_MYTABS_PRIORITY . ':', 'tabpriority', 4, 5, $target->getVar('tabpriority', 'e')));
 
-        $note = new XoopsFormText(_AM_MYTABS_NOTE . ":","tabnote",50, 255, $target->getVar('tabnote', 'e'));
+        $note = new XoopsFormText(_AM_MYTABS_NOTE . ':', 'tabnote', 50, 255, $target->getVar('tabnote', 'e'));
         $this->addElement($note);
 
         $this->addElement(new XoopsFormSelectGroup(_AM_MYTABS_GROUPS, 'tabgroups', true, $target->getVar('tabgroups'), 8, true));
 
-        $link = new XoopsFormText(_AM_MYTABS_LINK . ":","tablink",50, 255, $target->getVar('tablink', 'e'));
+        $link = new XoopsFormText(_AM_MYTABS_LINK . ':', 'tablink', 50, 255, $target->getVar('tablink', 'e'));
         $this->addElement($link);
 
-        $rev = new XoopsFormText(_AM_MYTABS_REV . ":","tabrev",50, 255, $target->getVar('tabrev', 'e'));
+        $rev = new XoopsFormText(_AM_MYTABS_REV . ':', 'tabrev', 50, 255, $target->getVar('tabrev', 'e'));
         $this->addElement($rev);
 
-        if (!$target->isNew() ) {
-            $this->addElement(new XoopsFormHidden("tabid", $target->getVar('tabid')));
+        if (!$target->isNew()) {
+            $this->addElement(new XoopsFormHidden('tabid', $target->getVar('tabid')));
         }
 
-        $this->addElement(new XoopsFormHidden("tabpageid", $target->getVar('tabpageid')));
-        $this->addElement(new XoopsFormHidden("op", "save"));
+        $this->addElement(new XoopsFormHidden('tabpageid', $target->getVar('tabpageid')));
+        $this->addElement(new XoopsFormHidden('op', 'save'));
 
-        $tray = new XoopsFormElementTray("");
-        $tray->addElement(new XoopsFormButton("", "submit", _AM_MYTABS_OK, "submit"));
+        $tray = new XoopsFormElementTray('');
+        $tray->addElement(new XoopsFormButton('', 'submit', _AM_MYTABS_OK, 'submit'));
 
-        $cancel = new XoopsFormButton("","cancel", _AM_MYTABS_CANCEL, "button");
-        $cancel->setExtra("onclick=\"self.location='main.php?pageid=".$target->getVar('tabpageid')."';\"");
+        $cancel = new XoopsFormButton('', 'cancel', _AM_MYTABS_CANCEL, 'button');
+        $cancel->setExtra("onclick=\"self.location='main.php?pageid=" . $target->getVar('tabpageid') . "';\"");
         $tray->addElement($cancel);
 
         $this->addElement($tray);

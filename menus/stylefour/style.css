@@ -1,64 +1,64 @@
 /* ^^^^^^^^ BELOW IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 .stylefour-menu {
-	position: relative;
-	display: block;
-	height: 39px;
-	font-size: 11px;
-	font-weight: bold;
-	background: transparent url(bgOFF.gif) repeat-x top left;
-	font-family: Arial, Verdana, Helvitica, sans-serif;
-	border-top: 4px solid #B30000;
+    position: relative;
+    display: block;
+    height: 39px;
+    font-size: 11px;
+    font-weight: bold;
+    background: transparent url(bgOFF.gif) repeat-x top left;
+    font-family: Arial, Verdana, Helvitica, sans-serif;
+    border-top: 4px solid #B30000;
 }
 
 .stylefour-menu ul {
-	margin: 0 !important;
-	padding: 0 !important;
-	list-style-type: none;
-	width: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none;
+    width: auto;
 }
 
 .stylefour-menu ul li {
-	display: block;
-	float: left;
-	margin: 0 !important;
+    display: block;
+    float: left;
+    margin: 0 !important;
 }
 
 .stylefour-menu ul li a {
-	display: block;
-	float: left;
-	color: #666 !important;
-	text-decoration: none !important;
-	padding: 11px 20px 0 20px !important;
-	height: 23px;
-	background: transparent url(bgDIVIDER.gif) no-repeat top right;
+    display: block;
+    float: left;
+    color: #666 !important;
+    text-decoration: none !important;
+    padding: 11px 20px 0 20px !important;
+    height: 23px;
+    background: transparent url(bgDIVIDER.gif) no-repeat top right;
 }
 
-.stylefour-menu ul li a:hover,.stylefour-menu ul li a.tabs-selected {
-	color: #B30000 !important;
-	background: #fff url(bgON.gif) no-repeat top right !important;
+.stylefour-menu ul li a:hover, .stylefour-menu ul li a.tabs-selected {
+    color: #B30000 !important;
+    background: #fff url(bgON.gif) no-repeat top right !important;
 }
 
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 .stylefour-content {
-	display: none;
-	padding: 0px;
+    display: none;
+    padding: 0px;
 }
 
 .stylefour-block {
-	padding: 10px;
+    padding: 10px;
 }
 
 .stylefour-blocktitle {
-	margin-top: 0px;
+    margin-top: 0px;
 }
 
 .stylefour-blockcontent {
-	padding: 0px;
-	text-align: justify;
+    padding: 0px;
+    text-align: justify;
 }
 
 @media print {
-	.stylefour-content {
-		display: block !important;
-	}
+    .stylefour-content {
+        display: block !important;
+    }
 }

@@ -15,9 +15,8 @@
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: header.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/include/cp_header.php';
-include_once dirname(__FILE__) . '/functions.php';
-include_once dirname(dirname(__FILE__)) . '/include/functions.php';
+require_once __DIR__ . '/../../../include/cp_header.php';
+require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/../include/functions.php';

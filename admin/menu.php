@@ -15,31 +15,34 @@
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: menu.php 0 2009-11-14 18:47:04Z trabis $
  */
- 
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
 
-$dirname = basename(dirname(dirname(__FILE__)));
-$module_handler = xoops_gethandler('module');
-$module = $module_handler->getByDirname($dirname);
-$pathIcon32 = $module->getInfo('icons32');
+$moduleDirName = basename(dirname(__DIR__));
 
-//xoops_loadLanguage('admin', $dirname);
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
+}
+$adminObject = \Xmf\Module\Admin::getInstance();
+
+$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+//$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
+
+$moduleHelper->loadLanguage('modinfo');
 
 $adminmenu = array();
 
-$i = 1;
-$adminmenu[$i]["title"] = _MI_MYTABS_ADMMENU0;
-$adminmenu[$i]["link"] = 'admin/index.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/home.png';
+$i                      = 1;
+$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU0;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
 
-$i++;
+++$i;
 $adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU1;
-$adminmenu[$i]['link'] = "admin/main.php";
-$adminmenu[$i]["icon"] = $pathIcon32.'/manage.png';
+$adminmenu[$i]['link']  = 'admin/main.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/manage.png';
 
-$i++;
+++$i;
 $adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU2;
-$adminmenu[$i]['link'] = "admin/about.php";
-$adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
+$adminmenu[$i]['link']  = 'admin/about.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';

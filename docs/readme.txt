@@ -6,8 +6,8 @@ With this Xoops module, your can create blocks with several tabs an blocks insid
 The module can :
 . Create any blocks you want (just clone the original)
 . Create any pages (holders for tabs) you want so you can choose in the block what page to show
-. Create any tabs you want per page 
-. Create any blocks you want per tabs 
+. Create any tabs you want per page
+. Create any blocks you want per tabs
 . Set group view permissions per block/page, tab and block
 . Set time based tabs and blocks (auto-expiring)
 . Set blocks side: left, center or right.
@@ -25,22 +25,22 @@ Requires xoops 2.4.x and php5
 How to install mytabs
 ====================
 
-Copy mytabs folder into the /modules directory of your website. 
+Copy mytabs folder into the /modules directory of your website.
 Then log in to your site as administrator, go to System Admin > Modules, look for the mytabs
-icon in the list of uninstalled modules and click in the install icon. 
+icon in the list of uninstalled modules and click in the install icon.
 Follow the directions in the screen and you'll be ready to go.
 
 
 Upgrading from 2.1
 ====================
 
-Remove all mytabs files and upload new ones. You do not need to remove or update menus folder. 
+Remove all mytabs files and upload new ones. You do not need to remove or update menus folder.
 
 
 Tips
 ====================
 
-You can create your own style.css for tabs. 
+You can create your own style.css for tabs.
 Create a folder under menus with the class name you use inside your style.css (check how the other ones are done)
 Upload your style.css and images to the menu folder you've created and it will be available for selection in mytabs blocks!
 
@@ -59,7 +59,7 @@ Ex of a custom block:
 
 And then set 'Reveal ID' inside the tabs edit form
 for tab1 : my div
-for tab2 : mydiv2 
+for tab2 : mydiv2
 
 You can expand/contract more than one div, just separate the divs ids with a comma
 
@@ -69,7 +69,7 @@ for tab 3 : my div, mydiv2
 
 You can also add a link to a tab.
 Just set 'Links to' with the complete URL
-Ex: http://www.anothersite.com/register.php 
+Ex: http://www.anothersite.com/register.php
 
 ------
 
@@ -95,23 +95,23 @@ In the tab title just add
 {pm_readed}
 {pm_total}
 
-ex: 
+ex:
 
 title = Inbox {pm_new}
 Link to = viewpmsg.php
 
 ------
 
-You can hide the tabs in the block settings. This is useful if you are using delay>0 (switching tabs). This 
-way you create a slide show for your photos, partners, publicity, etc where the name of the tab and the 
+You can hide the tabs in the block settings. This is useful if you are using delay>0 (switching tabs). This
+way you create a slide show for your photos, partners, publicity, etc where the name of the tab and the
 ability to stop the switching is not relevant.
 
 
 -----
 
-You can make a link to toggle a specific tab. 
-Let´s say you want xoops.org to open the "Install" tab that is in the front page.
-First you have to get the id of the block by viewing the source code. 
+You can make a link to toggle a specific tab.
+LetÂ´s say you want xoops.org to open the "Install" tab that is in the front page.
+First you have to get the id of the block by viewing the source code.
 You will find something link this in xoops.org:
 
 tabscontents_1215070896
@@ -119,13 +119,13 @@ tabscontents_1215070896
 Then you get the index of the tab you want to display. First tab = 0, second tab = 1, etc..., 'Install' tab = 5
 Making the link is as simple as this:
 
-http://www.xoops.org/index.php?tabscontents_1215070896=5
+https://xoops.org/index.php?tabscontents_1215070896=5
 
 
 Limitations
 ========
 
-Although you can use a mytabs block(let´s call it mytabsblock1) inside a mytabspage(let´s call it mytabspage1), using mytabspage1 inside mytabsblock1 is impossible as it results in an endless loop. Because of this, a check was added when rendering the blocks to prevent conflicting blocks to display. 
+Although you can use a mytabs block(letÂ´s call it mytabsblock1) inside a mytabspage(letÂ´s call it mytabspage1), using mytabspage1 inside mytabsblock1 is impossible as it results in an endless loop. Because of this, a check was added when rendering the blocks to prevent conflicting blocks to display.
 
 This means that you are able to add conflicting blocks but they are ignored and will not show in your page.
 
@@ -134,7 +134,7 @@ However it can be useful to use a mytabsblock2 that contains a mytabspage2 that 
 In a normal situation only one of the mytabsblocks will display because the other will be blocked by mytabs 'fool proof system'.
 To bypass this situation you have to edit the original mytabsblock3 and change the 'uniqueid' field.
 
-Yeah, it sounds more like a 'fool system'. I´ll try to make it better.
+Yeah, it sounds more like a 'fool system'. IÂ´ll try to make it better.
 
 
 Feedback

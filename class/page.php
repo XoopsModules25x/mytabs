@@ -15,29 +15,28 @@
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: page.php 0 2009-11-14 18:47:04Z trabis $
  */
-
-defined('XOOPS_ROOT_PATH') or die("XOOPS root path not defined");
+// defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
 class MytabsPage extends XoopsObject
 {
     /**
      * constructor
      */
-    function __construct()
+    public function __construct()
     {
-        $this->initVar("pageid", XOBJ_DTYPE_INT);
+        $this->initVar('pageid', XOBJ_DTYPE_INT);
         $this->initVar('pagetitle', XOBJ_DTYPE_TXTBOX, '');
     }
+
     /**
      * Get the form for adding or editing pages
      *
      * @return MytabsPageForm
      */
-    function getForm()
+    public function getForm()
     {
-        include_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
+        require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
         $form = new MytabsPageForm('Page', 'pageform', 'page.php');
         $form->createElements($this);
 
@@ -49,9 +48,10 @@ class MytabsPageHandler extends XoopsPersistableObjectHandler
 {
     /**
      * constructor
+     * @param XoopsDatabase $db
      */
-    function __construct(&$db)
+    public function __construct(XoopsDatabase $db)
     {
-        parent::__construct($db, "mytabs_page", 'MytabsPage', "pageid", "pagetitle");
+        parent::__construct($db, 'mytabs_page', 'MytabsPage', 'pageid', 'pagetitle');
     }
 }

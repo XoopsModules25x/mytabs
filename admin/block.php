@@ -15,27 +15,26 @@
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: block.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-require dirname(__FILE__) . '/header.php';
+require_once __DIR__ . '/header.php';
 
-if (isset($_REQUEST['op'])){
+if (isset($_REQUEST['op'])) {
     $op = $_REQUEST['op'];
 } else {
     redirect_header('main.php', 1, _NOPERM);
     exit;
 }
 
-$pageblock_handler = xoops_getmodulehandler('pageblock');
+$pageblockHandler = xoops_getModuleHandler('pageblock');
 
 switch ($op) {
-    case "save":
+    case 'save':
 
         if (!isset($_POST['pageblockid'])) {
-            $block = $pageblock_handler->create();
-        } else if (!$block = $pageblock_handler->get($_POST['pageblockid'])){
-            $block = $pageblock_handler->create();
+            $block = $pageblockHandler->create();
+        } elseif (!$block = $pageblockHandler->get($_POST['pageblockid'])) {
+            $block = $pageblockHandler->create();
         }
 
         $block->setVar('pageid', $_POST['pageid']);
@@ -44,8 +43,8 @@ switch ($op) {
 
         if (isset($_POST['options']) && (count($_POST['options']) > 0)) {
             $options = $_POST['options'];
-            $count = count($options);
-            for ($i = 0; $i < $count; $i++) {
+            $count   = count($options);
+            for ($i = 0; $i < $count; ++$i) {
                 if (is_array($options[$i])) {
                     $options[$i] = implode(',', $options[$i]);
                 }
@@ -66,20 +65,20 @@ switch ($op) {
         $block->setVar('note', $_POST['note']);
         $block->setVar('groups', $_POST['groups']);
 
-        if ($pageblock_handler->insert($block)) {
-            redirect_header('main.php?pageid='.$block->getVar('pageid'), 1, _AM_MYTABS_SUCCESS);
+        if ($pageblockHandler->insert($block)) {
+            redirect_header('main.php?pageid=' . $block->getVar('pageid'), 1, _AM_MYTABS_SUCCESS);
             exit;
         }
         break;
 
-    case "new":
-    case "edit":
+    case 'new':
+    case 'edit':
 
         xoops_cp_header();
         mytabs_adminmenu(0);
 
-        if ($op == "new") {
-            $block = $pageblock_handler->create();
+        if ($op == 'new') {
+            $block = $pageblockHandler->create();
             $block->setVar('pageid', $_REQUEST['pageid']);
             $block->setVar('tabid', $_POST['tabid']);
             $block->setVar('blockid', $_POST['blockid']);
@@ -87,18 +86,18 @@ switch ($op) {
             $block->setVar('todate', time());
             $block->setBlock($_POST['blockid']);
         } else {
-            $block = $pageblock_handler->get($_REQUEST['pageblockid']);
+            $block = $pageblockHandler->get($_REQUEST['pageblockid']);
             $block->setBlock();
         }
         $pageid = $block->getVar('pageid');
 
-        echo "<a href=\"main.php\">" . _AM_MYTABS_HOME . "</a>&nbsp;";
+        echo "<a href=\"main.php\">" . _AM_MYTABS_HOME . '</a>&nbsp;';
 
         if ($pageid > 0) {
-            $page_handler = xoops_getmodulehandler('page');
-            $page = $page_handler->get($pageid);
-            echo "&raquo;&nbsp;";
-            echo "<a href=\"main.php?pageid=" . $pageid . "\">" . $page->getVar("pagetitle") . "</a>";
+            $pageHandler = xoops_getModuleHandler('page');
+            $page        = $pageHandler->get($pageid);
+            echo '&raquo;&nbsp;';
+            echo "<a href=\"main.php?pageid=" . $pageid . "\">" . $page->getVar('pagetitle') . '</a>';
         }
 
         $form = $block->getForm();
@@ -107,14 +106,14 @@ switch ($op) {
         xoops_cp_footer();
         break;
 
-    case "delete":
-        $obj = $pageblock_handler->get($_REQUEST['pageblockid']);
+    case 'delete':
+        $obj = $pageblockHandler->get($_REQUEST['pageblockid']);
         if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
-            if ($pageblock_handler->delete($obj)) {
+            if ($pageblockHandler->delete($obj)) {
                 redirect_header('main.php?pageid=' . $obj->getVar('pageid'), 3, sprintf(_AM_MYTABS_DELETEDSUCCESS, $obj->getVar('title')));
             } else {
                 xoops_cp_header();
-                echo implode('<br />', $obj->getErrors());
+                echo implode('<br>', $obj->getErrors());
                 xoops_cp_footer();
             }
         } else {

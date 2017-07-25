@@ -1,3 +1,8 @@
+2.22 Beta 1       2014-04-23
+=================================
+- moved all images, CSS, and JS files to /assets (mamba)
+- renamed .html Smarty templates to .tpl (mamba)
+
 <b><u>=> Version 2.21 Final (2012-12-17)</u></b>
 - Converting to XOOPS 2.5.0 GUI (mamba)
 
@@ -11,13 +16,13 @@
 <b><u>=> Version 2.1 RC2 (2008-09-02)</u></b>
 - Fixed: Some css were fixed to look alike in IE and Mozilla.
 - Fixed: Javascript bug in IE when not using 'on mouse over'
-- Fixed: Xoops 2.2.x bug - Impossible to select menu class in blocks administration. 
+- Fixed: Xoops 2.2.x bug - Impossible to select menu class in blocks administration.
 - Added: Possibilitie to use mytabs blocks inside a mytabs page (use this with caution).
 - Improved: Blocks with same 'uniqueid' will not display to avoid conflict.
 
 <b><u>=> Version 2.1 RC (2008-08-31)</u></b>
 - Improved: 'css' folder removed and 'menus' folder added, new menus are now added as folders containing the style.css and the necessary images.
-- Fixed: Css conflicts. Css files and templates were changed, some IDs turned into Classes and were renamed. 
+- Fixed: Css conflicts. Css files and templates were changed, some IDs turned into Classes and were renamed.
 - Added: Five new menus added.
 
 <b><u>=> Version 2.1 Beta (2008-08-30)</u></b>
@@ -33,7 +38,7 @@
 - Added: option to use or not the onmouseover effect.
 
 <b><u>=> Version 2.0 RC2 (2008-06-23)</u></b>
-- Fixed: Scrolling tabs don´t work for tabs using "Reveal ID"
+- Fixed: Scrolling tabs donï¿½t work for tabs using "Reveal ID"
 - Added: Partial compatibility with Xoops Cube Legacy. Blocks admin does not work (sorry)
 - Removed: jscript/rotate.js
 - Removed: Uncompleted translation files
@@ -51,25 +56,25 @@
 - Added : Tabs can simply be links to other pages, instead of load a tab content
 - Added : Ability to expand / contract arbitrary DIVs on the page when a tab is selected
 
-<b><u>=> Version 2.0 Alpha3 (2008-06-05)</u></b> 
+<b><u>=> Version 2.0 Alpha3 (2008-06-05)</u></b>
 - Removed : Old css files (by Mowaffak)
 - Added : New css files (by Mowaffak)
 
-<b><u>=> Version 2.0 Alpha2 (2008-06-04)</u></b> 
+<b><u>=> Version 2.0 Alpha2 (2008-06-04)</u></b>
 - Fixed : Blocks not showing (The stupid bug wins again)
 - Fixed : division by zero if no blocks were set for a tab
 
-<b><u>=> Version 2.0 Alpha (2008-06-03)</u></b> 
+<b><u>=> Version 2.0 Alpha (2008-06-03)</u></b>
 - Added : Custom blocks to block selection
 - Added : Sides left, center and right for block placement inside tabs
 - Improved : Admin buttons displaying in Blocksadmin
 
-<b><u>=> Version 1.0 Final (2008-05-31)</u></b> 
+<b><u>=> Version 1.0 Final (2008-05-31)</u></b>
 - Fixed : Blocks with multi selection options not working (by Mowaffak)
 - Fixed : Blank page when editing or creating tabs if debug mode is off (header() problem)
 - Fixed : removed tabcontent.css re-added in RC4 by mistake
 - Fixed : Admin buttons were not correctly fixing
-- Fixed : Fixes on some .css (by Mowaffak) 
+- Fixed : Fixes on some .css (by Mowaffak)
 - Improved : Admin buttons displaying in Blocksadmin
 
 <b><u>=> Version 1.0 RC4 (2008-05-30)</u></b>
