@@ -1,12 +1,7 @@
 <div id="help-template" class="outer">
-    <h1 class="head">Help:
-        <a class="ui-corner-all tooltip" href="<{$xoops_url}>/modules/mytabs/admin/index.php"
-           title="Back to the administration of MyTabs"> MyTabs
-            <img src="<{xoAdminIcons home.png}>"
-                 alt="Back to the Administration of MyTabs">
-        </a></h1>
+    <{include file=$smarty.const._MI_MYTABS_HELP_HEADER}>
 
-    <h4 class="odd">DESCRIPTION</h4>
+    <h4 class="odd">DESCRIPTION</h4> <br>
 
     <p class="even">MyTabs is a simple module to create and manage multiple content blocks and post them in Tabs. </p>
 

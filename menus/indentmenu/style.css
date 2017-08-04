@@ -1,61 +1,61 @@
 .indentmenu-menu {
-	width: 100%;
-	padding: 0px;
-	background: black url(indentbg.gif) center center repeat-x;
-	border-top: 1px solid navy; /*navy border*/
+    width: 100%;
+    padding: 0px;
+    background: black url(indentbg.gif) center center repeat-x;
+    border-top: 1px solid navy; /*navy border*/
 }
 
 .indentmenu-menu ul {
-	margin: 0px !important;
-	padding: 0px !important;
-	float: left;
-	background: black url(indentbg.gif) center center repeat-x;
+    margin: 0px !important;
+    padding: 0px !important;
+    float: left;
+    background: black url(indentbg.gif) center center repeat-x;
 }
 
 .indentmenu-menu ul li {
-	display: inline;
-	padding: 0px !important;
+    display: inline;
+    padding: 0px !important;
 }
 
 .indentmenu-menu ul li a {
-	float: left;
-	display: block;
-	color: white !important; /*text color*/
-	padding: 5px 11px !important;
-	text-decoration: none !important;
-	border-right: 1px solid navy; /*navy divider between menu items*/
+    float: left;
+    display: block;
+    color: white !important; /*text color*/
+    padding: 5px 11px !important;
+    text-decoration: none !important;
+    border-right: 1px solid navy; /*navy divider between menu items*/
 }
 
 .indentmenu-menu ul li a:hover {
-	color: white !important;
+    color: white !important;
 }
 
 .indentmenu-menu ul li a.tabs-selected {
-	color: white !important;
-	background: black url(indentbg2.gif) center center repeat-x;
+    color: white !important;
+    background: black url(indentbg2.gif) center center repeat-x;
 }
 
 .indentmenu-content {
-	display: none;
-	padding: 0;
+    display: none;
+    padding: 0;
 }
 
 .indentmenu-block {
-	padding: 10px;
+    padding: 10px;
 }
 
 .indentmenu-blocktitle {
-	margin-top: 0px;
-	color: #7B6C93;
+    margin-top: 0px;
+    color: #7B6C93;
 }
 
 .indentmenu-blockcontent {
-	padding: 0px;
-	text-align: justify;
+    padding: 0px;
+    text-align: justify;
 }
 
 @media print {
-	.indentmenu-content {
-		display: block !important;
-	}
+    .indentmenu-content {
+        display: block !important;
+    }
 }

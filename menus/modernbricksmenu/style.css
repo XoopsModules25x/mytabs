@@ -1,70 +1,70 @@
 .modernbricksmenu-menu {
-	width: 100%;
-	padding: 0;
-	border-bottom: 5px solid #D25A0B; /*Brown color theme*/
-	background: transparent;
-	voice-family: "\"}\"";
-	voice-family: inherit;
+    width: 100%;
+    padding: 0;
+    border-bottom: 5px solid #D25A0B; /*Brown color theme*/
+    background: transparent;
+    voice-family: "\"}\"";
+    voice-family: inherit;
 }
 
 .modernbricksmenu-menu ul {
-	font: bold 11px Arial;
-	margin: 0 !important;
-	margin-left: 10px !important;
-	/*margin between first menu item and left browser edge*/
-	padding: 0 !important;
-	list-style: none;
+    font: bold 11px Arial;
+    margin: 0 !important;
+    margin-left: 10px !important;
+    /*margin between first menu item and left browser edge*/
+    padding: 0 !important;
+    list-style: none;
 }
 
 .modernbricksmenu-menu li {
-	display: inline;
-	margin: 0 2px 0 0 !important;
-	padding: 0 !important;
-	text-transform: uppercase;
+    display: inline;
+    margin: 0 2px 0 0 !important;
+    padding: 0 !important;
+    text-transform: uppercase;
 }
 
 .modernbricksmenu-menu a {
-	float: left;
-	display: block;
-	color: white !important;
-	margin: 0 1px 0 0 !important; /*Margin between each menu item*/
-	padding: 5px 10px !important;
-	text-decoration: none !important;
-	letter-spacing: 1px;
-	background-color: black !important; /*Default menu color*/
-	border-bottom: 1px solid white;
+    float: left;
+    display: block;
+    color: white !important;
+    margin: 0 1px 0 0 !important; /*Margin between each menu item*/
+    padding: 5px 10px !important;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+    background-color: black !important; /*Default menu color*/
+    border-bottom: 1px solid white;
 }
 
 .modernbricksmenu-menu a:hover {
-	background-color: gray !important; /*Menu hover bgcolor*/
+    background-color: gray !important; /*Menu hover bgcolor*/
 }
 
 .modernbricksmenu-menu a.tabs-selected { /*currently selected tab*/
-	background-color: #D25A0B !important; /*Brown color theme*/
-	border-color: #D25A0B !important; /*Brown color theme*/
+    background-color: #D25A0B !important; /*Brown color theme*/
+    border-color: #D25A0B !important; /*Brown color theme*/
 }
 
 .modernbricksmenu-content {
-	display: none;
-	padding: 0px;
+    display: none;
+    padding: 0px;
 }
 
 .modernbricksmenu-block {
-	padding: 10px;
+    padding: 10px;
 }
 
 .modernbricksmenu-blocktitle {
-	color: #000;
-	margin-top: 0px;
+    color: #000;
+    margin-top: 0px;
 }
 
 .modernbricksmenu-blockcontent {
-	padding: 0px;
-	text-align: justify;
+    padding: 0px;
+    text-align: justify;
 }
 
 @media print {
-	.modernbricksmenu-content {
-		display: block !important;
-	}
+    .modernbricksmenu-content {
+        display: block !important;
+    }
 }
