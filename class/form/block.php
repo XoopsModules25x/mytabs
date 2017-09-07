@@ -63,7 +63,7 @@ class MytabsBlockForm extends XoopsThemeForm
         $this->addElement(new XoopsFormText(_AM_MYTABS_PRIORITY . ':', 'priority', 4, 5, $target->getVar('priority', 'e')));
 
         $cachetime     = new XoopsFormSelect(_AM_MYTABS_CACHETIME, 'pbcachetime', $target->getVar('pbcachetime', 'e'));
-        $cache_options = array(
+        $cache_options = [
             '0'      => _NOCACHE,
             '30'     => sprintf(_SECONDS, 30),
             '60'     => _MINUTE,
@@ -74,7 +74,7 @@ class MytabsBlockForm extends XoopsThemeForm
             '86400'  => _DAY,
             '259200' => sprintf(_DAYS, 3),
             '604800' => _WEEK
-        );
+        ];
         $cachetime->addOptionArray($cache_options);
         $this->addElement($cachetime);
         $this->addElement(new XoopsFormRadioYN(_AM_MYTABS_CACHEBYURL, 'cachebyurl', $target->getVar('cachebyurl', 'e')));

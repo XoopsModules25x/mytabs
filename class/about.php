@@ -111,11 +111,11 @@ class MytabsAbout
 
         $people = $versioninfo->getInfo('people');
         if ($people) {
-            $this->_tpl->assign('module_people_developers', isset($people['developers']) ? array_map(array($this, 'sanitize'), $people['developers']) : false);
-            $this->_tpl->assign('module_people_testers', isset($people['testers']) ? array_map(array($this, 'sanitize'), $people['testers']) : false);
-            $this->_tpl->assign('module_people_translaters', isset($people['translaters']) ? array_map(array($this, 'sanitize'), $people['translaters']) : false);
-            $this->_tpl->assign('module_people_documenters', isset($people['documenters']) ? array_map(array($this, 'sanitize'), $people['documenters']) : false);
-            $this->_tpl->assign('module_people_other', isset($people['other']) ? array_map(array($this, 'sanitize'), $people['other']) : false);
+            $this->_tpl->assign('module_people_developers', isset($people['developers']) ? array_map([$this, 'sanitize'], $people['developers']) : false);
+            $this->_tpl->assign('module_people_testers', isset($people['testers']) ? array_map([$this, 'sanitize'], $people['testers']) : false);
+            $this->_tpl->assign('module_people_translaters', isset($people['translaters']) ? array_map([$this, 'sanitize'], $people['translaters']) : false);
+            $this->_tpl->assign('module_people_documenters', isset($people['documenters']) ? array_map([$this, 'sanitize'], $people['documenters']) : false);
+            $this->_tpl->assign('module_people_other', isset($people['other']) ? array_map([$this, 'sanitize'], $people['other']) : false);
         }
         //$this->_tpl->assign('module_developers', $versioninfo->getInfo('developer_email'));
 

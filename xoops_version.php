@@ -39,7 +39,7 @@ $modversion['module_website_name'] = 'XOOPS';
 $modversion['min_php']             = '5.5';
 $modversion['min_xoops']           = '2.5.9';
 $modversion['min_admin']           = '1.2';
-$modversion['min_db']              = array('mysql' => '5.5');
+$modversion['min_db']              = ['mysql' => '5.5'];
 
 //Database
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
@@ -56,33 +56,33 @@ $modversion['adminmenu']   = 'admin/menu.php';
 $modversion['system_menu'] = 1;
 
 // ------------------- Help files ------------------- //
-$modversion['helpsection'] = array(
+$modversion['helpsection'] = [
     ['name' => _MI_MYTABS_OVERVIEW, 'link' => 'page=help'],
     ['name' => _MI_MYTABS_DISCLAIMER, 'link' => 'page=disclaimer'],
     ['name' => _MI_MYTABS_LICENSE, 'link' => 'page=license'],
     ['name' => _MI_MYTABS_SUPPORT, 'link' => 'page=support'],
-);
+];
 
-$modversion['templates'][] = array(
+$modversion['templates'][] = [
     'file'        => 'mytabs_admin_blocks.tpl',
     'description' => ''
-);
-$modversion['templates'][] = array(
+];
+$modversion['templates'][] = [
     'file'        => 'mytabs_admin_page.tpl',
     'description' => ''
-);
-$modversion['templates'][] = array(
+];
+$modversion['templates'][] = [
     'file'        => 'mytabs_block.tpl',
     'description' => ''
-);
-$modversion['templates'][] = array(
+];
+$modversion['templates'][] = [
     'file'        => 'mytabs_index.tpl',
     'description' => ''
-);
-$modversion['templates'][] = array(
+];
+$modversion['templates'][] = [
     'file'        => 'mytabs_about.tpl',
     'description' => ''
-);
+];
 
 //Blocks
 $modversion['blocks'][1]['file']        = 'mytabs_block.php';

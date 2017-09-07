@@ -25,13 +25,13 @@
 
 function mytabs_blockShow($pageid, $tabid, $placement = '', $remove = '')
 {
-    $block     = array();
-    $visblocks = array();
+    $block     = [];
+    $visblocks = [];
 
     $blocksHandler = xoops_getModuleHandler('pageblock', 'mytabs');
     $blocks        = $blocksHandler->getBlocks($pageid, $tabid, $placement, $remove);
 
-    $groups = $GLOBALS['xoopsUser'] ? $GLOBALS['xoopsUser']->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
+    $groups = $GLOBALS['xoopsUser'] ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
 
     foreach (array_keys($blocks) as $key) {
         foreach ($blocks[$key] as $thisblock) {

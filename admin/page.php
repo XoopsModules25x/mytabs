@@ -23,7 +23,6 @@ if (isset($_REQUEST['op'])) {
     $op = $_REQUEST['op'];
 } else {
     redirect_header('main.php', 1, _NOPERM);
-    exit;
 }
 
 $pageHandler = xoops_getModuleHandler('page');
@@ -40,7 +39,6 @@ switch ($op) {
 
         if ($pageHandler->insert($page)) {
             redirect_header('main.php?pageid=' . $page->getVar('pageid'), 1, _AM_MYTABS_SUCCESS);
-            exit;
         }
         break;
 
@@ -88,7 +86,7 @@ switch ($op) {
             }
         } else {
             xoops_cp_header();
-            xoops_confirm(array('ok' => 1, 'pageid' => $_REQUEST['pageid'], 'op' => 'delete'), 'page.php', sprintf(_AM_MYTABS_RUSUREDEL, $obj->getVar('pagetitle')));
+            xoops_confirm(['ok' => 1, 'pageid' => $_REQUEST['pageid'], 'op' => 'delete'], 'page.php', sprintf(_AM_MYTABS_RUSUREDEL, $obj->getVar('pagetitle')));
             require_once __DIR__ . '/admin_footer.php';
         }
         break;

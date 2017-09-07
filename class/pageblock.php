@@ -42,7 +42,7 @@ class MytabsPageBlock extends XoopsObject
         $this->initVar('note', XOBJ_DTYPE_TXTAREA, '');
         $this->initVar('pbcachetime', XOBJ_DTYPE_INT, 0);
         $this->initVar('cachebyurl', XOBJ_DTYPE_INT, 0);
-        $this->initVar('groups', XOBJ_DTYPE_ARRAY, serialize(array(XOOPS_GROUP_ANONYMOUS, XOOPS_GROUP_USERS)));
+        $this->initVar('groups', XOBJ_DTYPE_ARRAY, serialize([XOOPS_GROUP_ANONYMOUS, XOOPS_GROUP_USERS]));
     }
 
     /**
@@ -99,7 +99,7 @@ class MytabsPageBlock extends XoopsObject
      */
     public function toArray($format = 's')
     {
-        $ret  = array();
+        $ret  = [];
         $vars = $this->getVars();
         foreach (array_keys($vars) as $key) {
             $value     = $this->getVar($key, $format);
@@ -140,14 +140,14 @@ class MytabsPageBlock extends XoopsObject
      */
     public function render($template, $unique = 0)
     {
-        $block = array(
+        $block = [
             'blockid'   => $this->getVar('pageblockid'),
             'tabid'     => $this->getVar('tabid'),
             'module'    => $this->block->getVar('dirname'),
             'title'     => $this->getVar('title'),
             'placement' => $this->getVar('placement'),
             'weight'    => $this->getVar('priority')
-        );
+        ];
 
         $xoopsLogger = XoopsLogger::getInstance();
 
@@ -206,7 +206,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
      */
     public function getBlocks($pageid = 0, $tabid = 0, $placement = '', $remove = '', $not_invisible = true)
     {
-        $blocks = array();
+        $blocks = [];
         $sql    = 'SELECT *, pb.options, pb.title FROM ' . $this->db->prefix('mytabs_pageblock') . ' pb LEFT JOIN ' . $this->db->prefix('newblocks') . ' b ON pb.blockid=b.bid WHERE (pb.pageid = ' . $pageid . ')';
 
         if ($tabid > 0) {
@@ -230,7 +230,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
         $result = $this->db->query($sql);
 
         if (!$result) {
-            return array();
+            return [];
         }
 
         require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
@@ -317,7 +317,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
      */
     public function getAllBlocks()
     {
-        $ret    = array();
+        $ret    = [];
         $result = $this->db->query('SELECT bid, b.name AS name, b.title AS title, m.name AS modname  FROM ' . $this->db->prefix('newblocks') . ' b, ' . $this->db->prefix('modules') . ' m WHERE (b.mid=m.mid) ORDER BY modname, name');
 
         while (list($id, $name, $title, $modname) = $this->db->fetchRow($result)) {
@@ -334,7 +334,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
      */
     public function getAllCustomBlocks()
     {
-        $ret    = array();
+        $ret    = [];
         $result = $this->db->query('
             SELECT bid, name, title FROM ' . $this->db->prefix('newblocks') . '  WHERE  mid = 0 ORDER BY name');
 

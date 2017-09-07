@@ -24,11 +24,11 @@
 function b_mytabs_block_show($options)
 {
     global $xoTheme, $xoopsTpl;
-    $block   = array();
-    $vistabs = array();
-    static $alluniqueids = array();
+    $block   = [];
+    $vistabs = [];
+    static $alluniqueids = [];
     if (in_array($options[6], $alluniqueids)) {
-        return array();
+        return [];
     } else {
         $alluniqueids[] = $options[6];
     }
@@ -47,7 +47,7 @@ function b_mytabs_block_show($options)
         return $block;
     }
 
-    $groups = $GLOBALS['xoopsUser'] ? $GLOBALS['xoopsUser']->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
+    $groups = $GLOBALS['xoopsUser'] ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
 
     foreach ($tabs as $tab) {
         if ($tab->isVisible() && array_intersect($tab->getVar('tabgroups'), $groups)) {
@@ -61,7 +61,7 @@ function b_mytabs_block_show($options)
     $hasmenu    = false;
     $i          = 0;
     foreach ($vistabs as $tab) {
-        $placements              = array();
+        $placements              = [];
         $width                   = 0;
         $block['tabs'][$i]['id'] = $tab->getVar('tabid');
         $tab_blocks              = mytabs_blockShow($pageid, $tab->getVar('tabid'), '', $options[6]);
@@ -92,7 +92,7 @@ function b_mytabs_block_show($options)
     }
 
     if (!$hasmenu) {
-        return array();
+        return [];
     }
 
     $tabsmenu .= '</ul><br style="clear: left">';
@@ -108,7 +108,7 @@ function b_mytabs_block_show($options)
     $block['showblockstitle'] = $options[7];
     $block['onmouseover']     = $options[8];
     $block['hidetabs']        = $options[9];
-    $block['placements']      = array('left', 'center', 'right');
+    $block['placements']      = ['left', 'center', 'right'];
 
     $xoTheme->addStylesheet(XOOPS_URL . '/modules/mytabs/menus/' . $options[3] . '/style.css');
     $xoTheme->addScript(XOOPS_URL . '/modules/mytabs/assets/js/tabcontent.js');

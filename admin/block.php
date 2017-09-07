@@ -23,7 +23,6 @@ if (isset($_REQUEST['op'])) {
     $op = $_REQUEST['op'];
 } else {
     redirect_header('main.php', 1, _NOPERM);
-    exit;
 }
 
 $pageblockHandler = xoops_getModuleHandler('pageblock');
@@ -67,7 +66,6 @@ switch ($op) {
 
         if ($pageblockHandler->insert($block)) {
             redirect_header('main.php?pageid=' . $block->getVar('pageid'), 1, _AM_MYTABS_SUCCESS);
-            exit;
         }
         break;
 
@@ -118,7 +116,7 @@ switch ($op) {
             }
         } else {
             xoops_cp_header();
-            xoops_confirm(array('ok' => 1, 'pageblockid' => $_REQUEST['pageblockid'], 'op' => 'delete'), 'block.php', sprintf(_AM_MYTABS_RUSUREDEL, $obj->getVar('title')));
+            xoops_confirm(['ok' => 1, 'pageblockid' => $_REQUEST['pageblockid'], 'op' => 'delete'], 'block.php', sprintf(_AM_MYTABS_RUSUREDEL, $obj->getVar('title')));
             xoops_cp_footer();
         }
         break;

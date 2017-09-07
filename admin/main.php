@@ -95,7 +95,7 @@ $allcustomblocks = $pageblockHandler->getAllCustomBlocks();
 $allblocks       = $allblocks + $allcustomblocks;
 
 $has_tabs   = false;
-$tabs_array = array();
+$tabs_array = [];
 $criteria   = new Criteria('tabpageid', $pageid);
 $criteria->setSort('tabpriority');
 $criteria->setOrder('ASC');

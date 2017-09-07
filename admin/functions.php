@@ -45,7 +45,7 @@ function mytabs_adminmenu($currentoption = 0, $breadcrumb = '')
     ";
     global $xoopsModule, $xoopsConfig;
 
-    $tblColors = array('', '', '');
+    $tblColors = ['', '', ''];
     if ($currentoption >= 0) {
         $tblColors[$currentoption] = 'current';
     }

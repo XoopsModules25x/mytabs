@@ -33,7 +33,7 @@ class MytabsTab extends XoopsObject
         $this->initVar('tabfromdate', XOBJ_DTYPE_INT);
         $this->initVar('tabtodate', XOBJ_DTYPE_INT);
         $this->initVar('tabnote', XOBJ_DTYPE_TXTAREA, '');
-        $this->initVar('tabgroups', XOBJ_DTYPE_ARRAY, serialize(array(XOOPS_GROUP_ANONYMOUS, XOOPS_GROUP_USERS)));
+        $this->initVar('tabgroups', XOBJ_DTYPE_ARRAY, serialize([XOOPS_GROUP_ANONYMOUS, XOOPS_GROUP_USERS]));
     }
 
     /**
