@@ -33,16 +33,16 @@ $moduleHelper->loadLanguage('modinfo');
 $adminmenu = [];
 
 $i                      = 1;
-$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU0;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
+'title' =>  _MI_MYTABS_ADMMENU0,
+'link' =>  'admin/index.php',
+'icon' =>  $pathIcon32 . '/home.png',
 
 ++$i;
-$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU1;
-$adminmenu[$i]['link']  = 'admin/main.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/manage.png';
+'title' =>  _MI_MYTABS_ADMMENU1,
+'link' =>  'admin/main.php',
+'icon' =>  $pathIcon32 . '/manage.png',
 
 ++$i;
-$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU2;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';
+'title' =>  _MI_MYTABS_ADMMENU2,
+'link' =>  'admin/about.php',
+'icon' =>  $pathIcon32 . '/about.png',
