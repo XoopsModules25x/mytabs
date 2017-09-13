@@ -24,25 +24,26 @@ if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
     $moduleHelper = Xmf\Module\Helper::getHelper('system');
 }
 
-
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
 //$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
 $moduleHelper->loadLanguage('modinfo');
 
-$adminmenu = [];
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU0,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png',
+];
 
-$i                      = 1;
-'title' =>  _MI_MYTABS_ADMMENU0,
-'link' =>  'admin/index.php',
-'icon' =>  $pathIcon32 . '/home.png',
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU1,
+    'link'  => 'admin/main.php',
+    'icon'  => $pathIcon32 . '/manage.png',
+];
 
-++$i;
-'title' =>  _MI_MYTABS_ADMMENU1,
-'link' =>  'admin/main.php',
-'icon' =>  $pathIcon32 . '/manage.png',
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU2,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
+];
 
-++$i;
-'title' =>  _MI_MYTABS_ADMMENU2,
-'link' =>  'admin/about.php',
-'icon' =>  $pathIcon32 . '/about.png',
