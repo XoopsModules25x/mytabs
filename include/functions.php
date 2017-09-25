@@ -47,9 +47,9 @@ function mytabs_blockShow($pageid, $tabid, $placement = '', $remove = '')
         $logger_name = $visblocks[$i]->getVar('title') . '(' . $visblocks[$i]->getVar('pageblockid') . ')';
         $GLOBALS['xoopsLogger']->startTime($logger_name);
         $thisblock = $visblocks[$i]->render($GLOBALS['xoopsTpl'], $tabid . '_' . $visblocks[$i]->getVar('pageblockid'));
-        if ($thisblock !== false) {
+        if (false !== $thisblock) {
             if (strlen($thisblock['title']) > 0) {
-                if ($thisblock['title'][0] == '-') {
+                if ('-' == $thisblock['title'][0]) {
                     $thisblock['title'] = '';
                 }
             }

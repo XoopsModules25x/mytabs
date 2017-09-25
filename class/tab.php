@@ -43,8 +43,8 @@ class MytabsTab extends XoopsObject
      */
     public function isVisible()
     {
-        return ($this->getVar('tabshowalways') == 'yes'
-                || ($this->getVar('tabshowalways') == 'time'
+        return ('yes' == $this->getVar('tabshowalways')
+                || ('time' == $this->getVar('tabshowalways')
                     && $this->getVar('tabfromdate') <= time()
                     && $this->getVar('tabtodate') >= time()));
     }
@@ -105,7 +105,7 @@ class MytabsTab extends XoopsObject
     public function getTabLink()
     {
         $link = $this->getVar('tablink');
-        if ($link == '') {
+        if ('' == $link) {
             return $link;
         }
 

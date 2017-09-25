@@ -43,7 +43,7 @@ function b_mytabs_block_show($options)
     $criteria->setOrder('ASC');
     $tabs = $tabHandler->getObjects($criteria);
 
-    if (count($tabs) == 0) {
+    if (0 == count($tabs)) {
         return $block;
     }
 
@@ -72,16 +72,16 @@ function b_mytabs_block_show($options)
         }
 
         $count                      = count($placements);
-        $block['tabs'][$i]['width'] = ($count != 0) ? (int)(100 / $count) : 100;
+        $block['tabs'][$i]['width'] = (0 != $count) ? (int)(100 / $count) : 100;
 
         //for the menu
         $link  = $tab->getTabLink();
         $title = $tab->getTabTitle();
         $rev   = $tab->getVar('tabrev');
 
-        if ($count != 0 || ($count == 0 && ($link != '' || $rev != ''))) {
-            $link     = ($link != '') ? $link : '#';
-            $rev      = ($rev != '') ? ' rev="' . $rev . '" ' : '';
+        if (0 != $count || (0 == $count && ('' != $link || '' != $rev))) {
+            $link     = ('' != $link) ? $link : '#';
+            $rev      = ('' != $rev) ? ' rev="' . $rev . '" ' : '';
             $rel      = ' rel="tab-' . $tab->getVar('tabid') . '-' . $options[6] . '"';
             $tabsmenu .= '<li><a href="' . $link . '"' . $rel . $rev . $selected . '><span>' . $title . '</span></a></li>';
             $selected = '';
@@ -118,7 +118,7 @@ function b_mytabs_block_show($options)
 
 function b_mytabs_block_edit($options)
 {
-    if (!$options[6] || (isset($_GET['op']) && $_GET['op'] == 'clone')) {
+    if (!$options[6] || (isset($_GET['op']) && 'clone' == $_GET['op'])) {
         $options[6] = time();
     }
     $criteria = new CriteriaCompo();
@@ -160,12 +160,12 @@ function b_mytabs_block_edit($options)
     $form .= "</select>\n&nbsp;&nbsp;<i>" . _MB_MYTABS_CLASS_DSC . '</i><br><br>';
 
     $form .= '<b>' . _MB_MYTABS_PERSIST . "</b>&nbsp;<input type='radio' name='options[4]' value='true'";
-    if ($options[4] == 'true') {
+    if ('true' == $options[4]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[4]' value='false'";
-    if ($options[4] == 'false') {
+    if ('false' == $options[4]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_PERSIST_DSC . '</i><br><br>';
@@ -175,23 +175,23 @@ function b_mytabs_block_edit($options)
     $form .= '<b>' . _MB_MYTABS_UNIQUEID . "</b>&nbsp;<input type='text' name='options[6]' value='" . $options[6] . "'>&nbsp;&nbsp;<i>" . _MB_MYTABS_UNIQUEID_DSC . '</i><br><br>';
 
     $form .= '<b>' . _MB_MYTABS_BLOCKSTITLE . "</b>&nbsp;<input type='radio' name='options[7]' value='1'";
-    if ($options[7] == '1') {
+    if ('1' == $options[7]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[7]' value='0'";
-    if ($options[7] == '0') {
+    if ('0' == $options[7]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_BLOCKSTITLE_DSC . '</i><br><br>';
 
     $form .= '<b>' . _MB_MYTABS_ONMOUSEOVER . "</b>&nbsp;<input type='radio' name='options[8]' value='1'";
-    if ($options[8] == '1') {
+    if ('1' == $options[8]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[8]' value='0'";
-    if ($options[8] == '0') {
+    if ('0' == $options[8]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_ONMOUSEOVER_DSC . '</i><br><br>';
@@ -200,12 +200,12 @@ function b_mytabs_block_edit($options)
     if (!isset($options[9])) {
         $options[9] = 'false';
     }
-    if ($options[9] == 'true') {
+    if ('true' == $options[9]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[9]' value='false'";
-    if ($options[9] == 'false') {
+    if ('false' == $options[9]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_HIDETABS_DSC . '</i><br><br>';

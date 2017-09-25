@@ -75,7 +75,7 @@ switch ($op) {
         xoops_cp_header();
         mytabs_adminmenu(0);
 
-        if ($op == 'new') {
+        if ('new' == $op) {
             $block = $pageblockHandler->create();
             $block->setVar('pageid', $_REQUEST['pageid']);
             $block->setVar('tabid', $_POST['tabid']);
@@ -106,7 +106,7 @@ switch ($op) {
 
     case 'delete':
         $obj = $pageblockHandler->get($_REQUEST['pageblockid']);
-        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if ($pageblockHandler->delete($obj)) {
                 redirect_header('main.php?pageid=' . $obj->getVar('pageid'), 3, sprintf(_AM_MYTABS_DELETEDSUCCESS, $obj->getVar('title')));
             } else {

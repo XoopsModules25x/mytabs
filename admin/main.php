@@ -109,11 +109,11 @@ foreach ($tabs as $tab) {
     $tabs_array[$tab->getVar('tabid')]['rev']      = $tab->getVar('tabrev');
 
     $showalways = $tab->getVar('tabshowalways');
-    if ($showalways == 'no') {
+    if ('no' == $showalways) {
         $tabs_array[$tab->getVar('tabid')]['unvisible'] = true;
-    } elseif ($showalways == 'yes') {
+    } elseif ('yes' == $showalways) {
         $tabs_array[$tab->getVar('tabid')]['visible'] = true;
-    } elseif ($showalways == 'time') {
+    } elseif ('time' == $showalways) {
         $check = $tab->isVisible();
         if ($check) {
             $tabs_array[$tab->getVar('tabid')]['timebased'] = true;

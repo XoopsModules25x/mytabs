@@ -53,7 +53,7 @@ class MytabsPageBlock extends XoopsObject
     public function setBlock($blockid = 0)
     {
         require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
-        if ($blockid == 0) {
+        if (0 == $blockid) {
             $this->block = new XoopsBlock($this->getVar('blockid'));
             $this->block->assignVar('options', $this->getVar('options', 'n'));
             $this->block->assignVar('title', $this->getVar('title', 'n'));
@@ -71,8 +71,8 @@ class MytabsPageBlock extends XoopsObject
      */
     public function isVisible()
     {
-        return ($this->getVar('showalways') == 'yes'
-                || ($this->getVar('showalways') == 'time'
+        return ('yes' == $this->getVar('showalways')
+                || ('time' == $this->getVar('showalways')
                     && $this->getVar('fromdate') <= time()
                     && $this->getVar('todate') >= time()));
     }
@@ -114,11 +114,11 @@ class MytabsPageBlock extends XoopsObject
 
         // Special values
         $showalways = $this->getVar('showalways');
-        if ($showalways == 'no') {
+        if ('no' == $showalways) {
             $ret['unvisible'] = true;
-        } elseif ($showalways == 'yes') {
+        } elseif ('yes' == $showalways) {
             $ret['visible'] = true;
-        } elseif ($showalways == 'time') {
+        } elseif ('time' == $showalways) {
             $check = $this->isVisible();
             if ($check) {
                 $ret['timebased'] = true;
@@ -213,11 +213,11 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
             $sql .= ' AND (pb.tabid = ' . $tabid . ')';
         }
 
-        if ($remove != '') {
+        if ('' != $remove) {
             $sql .= " AND (pb.options NOT LIKE '%|" . $remove . "|%')";
         }
 
-        if ($placement != '') {
+        if ('' != $placement) {
             $sql .= " AND (pb.placement = '" . $placement . "')";
         }
 
@@ -241,7 +241,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
             foreach ($row as $name => $value) {
                 if (in_array($name, $vars)) {
                     $pageblock->assignVar($name, $value);
-                    if ($name != 'options' && $name != 'title') {
+                    if ('options' != $name && 'title' != $name) {
                         // Title and options should be set on the block
                         unset($vars[$name]);
                     }
@@ -300,7 +300,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
         $result = $this->db->query('
             SELECT MAX(priority) FROM ' . $this->db->prefix('mytabs_pageblock') . 'WHERE pageid=' . (int)$pageid . 'AND tabid=' . (int)$tabid);
 
-        if ($this->db->getRowsNum($result) == 0) {
+        if (0 == $this->db->getRowsNum($result)) {
             $priority = 1;
         } else {
             $row      = $this->db->fetchRow($result);
