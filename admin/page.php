@@ -56,7 +56,7 @@ switch ($op) {
         }
         $pageid = $page->getVar('pageid');
 
-        echo "<a href=\"main.php\">" . _AM_MYTABS_HOME . '</a>&nbsp;';
+        echo '<a href="main.php">' . _AM_MYTABS_HOME . '</a>&nbsp;';
 
         $form = $page->getForm();
         echo $form->render();

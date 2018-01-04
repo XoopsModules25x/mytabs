@@ -19,6 +19,8 @@
 
 // defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
+include __DIR__ . '/preloads/autoloader.php';
+
 $modversion['version']       = '2.22';
 $modversion['module_status'] = 'Beta 1';
 $modversion['release_date']  = '2017/07/23';

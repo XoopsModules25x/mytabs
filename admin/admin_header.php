@@ -28,7 +28,7 @@ $pathIcon16 = \Xmf\Module\Admin::iconUrl('', 32);
 $xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
 require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
 
-$myts = MyTextSanitizer::getInstance();
+$myts = \MyTextSanitizer::getInstance();
 
 if ($xoopsUser) {
     $modulepermHandler = xoops_getHandler('groupperm');

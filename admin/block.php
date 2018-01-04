@@ -89,13 +89,13 @@ switch ($op) {
         }
         $pageid = $block->getVar('pageid');
 
-        echo "<a href=\"main.php\">" . _AM_MYTABS_HOME . '</a>&nbsp;';
+        echo '<a href="main.php">' . _AM_MYTABS_HOME . '</a>&nbsp;';
 
         if ($pageid > 0) {
             $pageHandler = xoops_getModuleHandler('page');
             $page        = $pageHandler->get($pageid);
             echo '&raquo;&nbsp;';
-            echo "<a href=\"main.php?pageid=" . $pageid . "\">" . $page->getVar('pagetitle') . '</a>';
+            echo '<a href="main.php?pageid=' . $pageid . '">' . $page->getVar('pagetitle') . '</a>';
         }
 
         $form = $block->getForm();

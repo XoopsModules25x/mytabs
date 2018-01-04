@@ -53,13 +53,13 @@ function mytabs_adminmenu($currentoption = 0, $breadcrumb = '')
     xoops_loadLanguage('modinfo', 'mytabs');
 
     echo "<div id='buttontop'>";
-    echo "<table style=\"width: 100%; padding: 0; \" cellspacing=\"0\"><tr>";
-    echo "<td style=\"width: 60%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;\"><a class=\"nobutton\" href=\"../../system/admin.php?fct=blocksadmin&amp;selvis=-1&amp;selmod=-2&amp;selgrp=-1&amp;selgen="
+    echo '<table style="width: 100%; padding: 0; " cellspacing="0"><tr>';
+    echo '<td style="width: 60%; font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;"><a class="nobutton" href="../../system/admin.php?fct=blocksadmin&amp;selvis=-1&amp;selmod=-2&amp;selgrp=-1&amp;selgen='
          . $xoopsModule->getVar('mid')
-         . "\">"
+         . '">'
          . _MI_MYTABS_ADMMENU3
          . '</a>';
-    echo "<td style=\"width: 40%; font-size: 10px; text-align: right; color: #2F5376; padding: 0 6px; line-height: 18px;\"><b>" . $xoopsModule->name() . '  ' . _AM_MYTABS_MODULEADMIN . '</b> ' . $breadcrumb . '</td>';
+    echo '<td style="width: 40%; font-size: 10px; text-align: right; color: #2F5376; padding: 0 6px; line-height: 18px;"><b>' . $xoopsModule->name() . '  ' . _AM_MYTABS_MODULEADMIN . '</b> ' . $breadcrumb . '</td>';
     echo '</tr></table>';
     echo '</div>';
 
