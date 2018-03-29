@@ -30,7 +30,7 @@ $moduleHandler = xoops_getHandler('module');
 if (isset($_REQUEST['pageid'])) {
     $pageid = (int)$_REQUEST['pageid'];
 } else {
-    $criteria = new CriteriaCompo();
+    $criteria = new \CriteriaCompo();
     $criteria->setSort('pagetitle');
     $criteria->setOrder('DESC');
     $criteria->setLimit(1);
@@ -76,7 +76,7 @@ if (count($_POST) > 0) {
                 foreach ($_POST['markedtabs'] as $id) {
                     $tab = $tabHandler->get($id);
                     $tabHandler->delete($tab);
-                    $blocks = $pageblockHandler->getObjects(new Criteria('tabid', $id));
+                    $blocks = $pageblockHandler->getObjects(new \Criteria('tabid', $id));
                     foreach ($blocks as $block) {
                         $pageblockHandler->delete($block);
                     }
@@ -96,7 +96,7 @@ $allblocks       = $allblocks + $allcustomblocks;
 
 $has_tabs   = false;
 $tabs_array = [];
-$criteria   = new Criteria('tabpageid', $pageid);
+$criteria   = new \Criteria('tabpageid', $pageid);
 $criteria->setSort('tabpriority');
 $criteria->setOrder('ASC');
 $tabs = $tabHandler->getObjects($criteria);
@@ -109,11 +109,11 @@ foreach ($tabs as $tab) {
     $tabs_array[$tab->getVar('tabid')]['rev']      = $tab->getVar('tabrev');
 
     $showalways = $tab->getVar('tabshowalways');
-    if ('no' == $showalways) {
+    if ('no' === $showalways) {
         $tabs_array[$tab->getVar('tabid')]['unvisible'] = true;
-    } elseif ('yes' == $showalways) {
+    } elseif ('yes' === $showalways) {
         $tabs_array[$tab->getVar('tabid')]['visible'] = true;
-    } elseif ('time' == $showalways) {
+    } elseif ('time' === $showalways) {
         $check = $tab->isVisible();
         if ($check) {
             $tabs_array[$tab->getVar('tabid')]['timebased'] = true;
@@ -146,7 +146,7 @@ foreach (array_keys($blocks) as $tabid) {
 }
 
 $has_pages = false;
-$criteria  = new CriteriaCompo();
+$criteria  = new \CriteriaCompo();
 $criteria->setSort('pagetitle');
 $criteria->setOrder('ASC');
 $pagelist = $pageHandler->getObjects($criteria, true);
@@ -157,7 +157,7 @@ foreach (array_keys($pagelist) as $i) {
 
 $has_placements = false;
 $placement      = '<select name="tabid">';
-$tabs           = $tabHandler->getObjects(new Criteria('tabpageid', $pageid), false);
+$tabs           = $tabHandler->getObjects(new \Criteria('tabpageid', $pageid), false);
 foreach ($tabs as $tab) {
     $placement      .= '<option value="' . $tab->getVar('tabid') . '">' . $tab->getVar('tabtitle') . '</option>';
     $has_placements = true;

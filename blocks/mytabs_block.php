@@ -38,7 +38,7 @@ function b_mytabs_block_show($options)
     require_once XOOPS_ROOT_PATH . '/modules/mytabs/include/functions.php';
 
     $tabHandler = xoops_getModuleHandler('tab', 'mytabs');
-    $criteria   = new Criteria('tabpageid', $pageid);
+    $criteria   = new \Criteria('tabpageid', $pageid);
     $criteria->setSort('tabpriority');
     $criteria->setOrder('ASC');
     $tabs = $tabHandler->getObjects($criteria);
@@ -118,10 +118,10 @@ function b_mytabs_block_show($options)
 
 function b_mytabs_block_edit($options)
 {
-    if (!$options[6] || (isset($_GET['op']) && 'clone' == $_GET['op'])) {
+    if (!$options[6] || (isset($_GET['op']) && 'clone' === $_GET['op'])) {
         $options[6] = time();
     }
-    $criteria = new CriteriaCompo();
+    $criteria = new \CriteriaCompo();
     $criteria->setSort('pagetitle');
     $criteria->setOrder('ASC');
     $pageHandler = xoops_getModuleHandler('page', 'mytabs');
@@ -160,12 +160,12 @@ function b_mytabs_block_edit($options)
     $form .= "</select>\n&nbsp;&nbsp;<i>" . _MB_MYTABS_CLASS_DSC . '</i><br><br>';
 
     $form .= '<b>' . _MB_MYTABS_PERSIST . "</b>&nbsp;<input type='radio' name='options[4]' value='true'";
-    if ('true' == $options[4]) {
+    if ('true' === $options[4]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[4]' value='false'";
-    if ('false' == $options[4]) {
+    if ('false' === $options[4]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_PERSIST_DSC . '</i><br><br>';
@@ -200,12 +200,12 @@ function b_mytabs_block_edit($options)
     if (!isset($options[9])) {
         $options[9] = 'false';
     }
-    if ('true' == $options[9]) {
+    if ('true' === $options[9]) {
         $form .= ' checked';
     }
     $form .= '>' . _YES;
     $form .= "<input type='radio' name='options[9]' value='false'";
-    if ('false' == $options[9]) {
+    if ('false' === $options[9]) {
         $form .= ' checked';
     }
     $form .= '>' . _NO . '&nbsp;&nbsp;<i>' . _MB_MYTABS_HIDETABS_DSC . '</i><br><br>';

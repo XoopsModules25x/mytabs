@@ -54,11 +54,11 @@ class MytabsPageBlock extends XoopsObject
     {
         require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
         if (0 == $blockid) {
-            $this->block = new XoopsBlock($this->getVar('blockid'));
+            $this->block = new \XoopsBlock($this->getVar('blockid'));
             $this->block->assignVar('options', $this->getVar('options', 'n'));
             $this->block->assignVar('title', $this->getVar('title', 'n'));
         } else {
-            $this->block = new XoopsBlock($blockid);
+            $this->block = new \XoopsBlock($blockid);
             $this->block->assignVar('options', $this->block->getVar('options', 'n'));
             $this->block->assignVar('title', $this->block->getVar('title', 'n'));
         }
@@ -71,8 +71,8 @@ class MytabsPageBlock extends XoopsObject
      */
     public function isVisible()
     {
-        return ('yes' == $this->getVar('showalways')
-                || ('time' == $this->getVar('showalways')
+        return ('yes' === $this->getVar('showalways')
+                || ('time' === $this->getVar('showalways')
                     && $this->getVar('fromdate') <= time()
                     && $this->getVar('todate') >= time()));
     }
@@ -114,11 +114,11 @@ class MytabsPageBlock extends XoopsObject
 
         // Special values
         $showalways = $this->getVar('showalways');
-        if ('no' == $showalways) {
+        if ('no' === $showalways) {
             $ret['unvisible'] = true;
-        } elseif ('yes' == $showalways) {
+        } elseif ('yes' === $showalways) {
             $ret['visible'] = true;
-        } elseif ('time' == $showalways) {
+        } elseif ('time' === $showalways) {
             $check = $this->isVisible();
             if ($check) {
                 $ret['timebased'] = true;
@@ -188,7 +188,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
      * constructor
      * @param XoopsDatabase $db
      */
-    public function __construct(XoopsDatabase $db)
+    public function __construct(\XoopsDatabase $db)
     {
         parent::__construct($db, 'mytabs_pageblock', 'MytabsPageBlock', 'pageblockid', 'title');
     }
@@ -235,20 +235,20 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
 
         require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
 
-        while ($row = $this->db->fetchArray($result)) {
+        while (false !== ($row = $this->db->fetchArray($result))) {
             $pageblock = $this->create();
             $vars      = array_keys($pageblock->getVars());
             foreach ($row as $name => $value) {
                 if (in_array($name, $vars)) {
                     $pageblock->assignVar($name, $value);
-                    if ('options' != $name && 'title' != $name) {
+                    if ('options' !== $name && 'title' !== $name) {
                         // Title and options should be set on the block
                         unset($vars[$name]);
                     }
                 }
             }
 
-            $pageblock->block = new XoopsBlock($row);
+            $pageblock->block = new \XoopsBlock($row);
 
             $blocks[$pageblock->getVar('tabid')][] = $pageblock;
         }
@@ -269,7 +269,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
      */
     public function newPageBlock($pageid, $tabid, $blockid, $priority = -1)
     {
-        if ($priority == -1) {
+        if (-1 == $priority) {
             $priority = $this->getMaxPriority($pageid, $tabid);
         }
 
@@ -320,7 +320,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
         $ret    = [];
         $result = $this->db->query('SELECT bid, b.name AS name, b.title AS title, m.name AS modname  FROM ' . $this->db->prefix('newblocks') . ' b, ' . $this->db->prefix('modules') . ' m WHERE (b.mid=m.mid) ORDER BY modname, name');
 
-        while (list($id, $name, $title, $modname) = $this->db->fetchRow($result)) {
+        while (false !== (list($id, $name, $title, $modname) = $this->db->fetchRow($result))) {
             $ret[$id] = $modname . ' --> ' . $title . ' (' . $name . ')';
         }
 
@@ -338,7 +338,7 @@ class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
         $result = $this->db->query('
             SELECT bid, name, title FROM ' . $this->db->prefix('newblocks') . '  WHERE  mid = 0 ORDER BY name');
 
-        while (list($id, $name, $title) = $this->db->fetchRow($result)) {
+        while (false !== (list($id, $name, $title) = $this->db->fetchRow($result))) {
             $ret[$id] = $name . ' --> ' . $title;
         }
 

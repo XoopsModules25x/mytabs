@@ -41,7 +41,7 @@ if ($xoopsUser) {
 
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
     require_once XOOPS_ROOT_PATH . '/class/template.php';
-    $xoopsTpl = new XoopsTpl();
+    $xoopsTpl = new \XoopsTpl();
 }
 
 $xoopsTpl->assign('pathImageIcon', $pathIcon16);

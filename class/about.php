@@ -85,7 +85,7 @@ class MytabsAbout
         $moduleHandler = xoops_getHandler('module');
         $versioninfo   = $moduleHandler->get($xoopsModule->getVar('mid'));
 
-        $this->_tpl = new XoopsTpl();
+        $this->_tpl = new \XoopsTpl();
         $this->_tpl->assign('module_url', XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname') . '/');
         $this->_tpl->assign('module_image', $versioninfo->getInfo('image'));
         $this->_tpl->assign('module_name', $versioninfo->getInfo('name'));

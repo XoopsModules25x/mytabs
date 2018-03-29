@@ -50,7 +50,7 @@ class MytabsPageHandler extends XoopsPersistableObjectHandler
      * constructor
      * @param XoopsDatabase $db
      */
-    public function __construct(XoopsDatabase $db)
+    public function __construct(\XoopsDatabase $db)
     {
         parent::__construct($db, 'mytabs_page', 'MytabsPage', 'pageid', 'pagetitle');
     }

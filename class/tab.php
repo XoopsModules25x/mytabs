@@ -43,8 +43,8 @@ class MytabsTab extends XoopsObject
      */
     public function isVisible()
     {
-        return ('yes' == $this->getVar('tabshowalways')
-                || ('time' == $this->getVar('tabshowalways')
+        return ('yes' === $this->getVar('tabshowalways')
+                || ('time' === $this->getVar('tabshowalways')
                     && $this->getVar('tabfromdate') <= time()
                     && $this->getVar('tabtodate') >= time()));
     }
@@ -77,11 +77,11 @@ class MytabsTab extends XoopsObject
                 $user_id      = 0;
                 $user_id      = $GLOBALS['xoopsUser']->getVar('uid');
                 $pmHandler    = xoops_getHandler('privmessage');
-                $criteria_new = new CriteriaCompo(new Criteria('read_msg', 0));
-                $criteria_new->add(new Criteria('to_userid', $GLOBALS['xoopsUser']->getVar('uid')));
+                $criteria_new = new \CriteriaCompo(new \Criteria('read_msg', 0));
+                $criteria_new->add(new \Criteria('to_userid', $GLOBALS['xoopsUser']->getVar('uid')));
                 $new_messages = $pmHandler->getCount($criteria_new);
-                $criteria_old = new CriteriaCompo(new Criteria('read_msg', 1));
-                $criteria_old->add(new Criteria('to_userid', $GLOBALS['xoopsUser']->getVar('uid')));
+                $criteria_old = new \CriteriaCompo(new \Criteria('read_msg', 1));
+                $criteria_old->add(new \Criteria('to_userid', $GLOBALS['xoopsUser']->getVar('uid')));
                 $old_messages = $pmHandler->getCount($criteria_old);
                 $som          = $old_messages + $new_messages;
                 if ($new_messages > 0) {
@@ -130,7 +130,7 @@ class MytabsTabHandler extends XoopsPersistableObjectHandler
      * constructor
      * @param XoopsDatabase $db
      */
-    public function __construct(XoopsDatabase $db)
+    public function __construct(\XoopsDatabase $db)
     {
         parent::__construct($db, 'mytabs_tab', 'MytabsTab', 'tabid', 'tabtitle');
     }

@@ -66,8 +66,7 @@ $modversion['helpsection'] = [
 ];
 
 $modversion['templates'][] = [
-    'file'        => 'mytabs_admin_blocks.tpl',
-    'description' => ''
+    'file'        => 'mytabs_admin_blocks.tpl', 'description' => ''
 ];
 $modversion['templates'][] = [
     'file'        => 'mytabs_admin_page.tpl',

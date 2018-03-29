@@ -48,7 +48,7 @@ switch ($op) {
         xoops_cp_header();
         $adminObject->displayNavigation('main.php');
 
-        if ('new' == $op) {
+        if ('new' === $op) {
             $page = $pageHandler->create();
             $page->setVar('pagetitle', $_REQUEST['pagetitle']);
         } else {
@@ -69,12 +69,12 @@ switch ($op) {
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if ($pageHandler->delete($obj)) {
                 $tabHandler = xoops_getModuleHandler('tab');
-                $tabs       = $tabHandler->getObjects(new Criteria('tabpageid', $_REQUEST['pageid']));
+                $tabs       = $tabHandler->getObjects(new \Criteria('tabpageid', $_REQUEST['pageid']));
                 foreach ($tabs as $tab) {
                     $tabHandler->delete($tab);
                 }
                 $pageblockHandler = xoops_getModuleHandler('pageblock');
-                $blocks           = $pageblockHandler->getObjects(new Criteria('pageid', $_REQUEST['pageid']));
+                $blocks           = $pageblockHandler->getObjects(new \Criteria('pageid', $_REQUEST['pageid']));
                 foreach ($blocks as $block) {
                     $pageblockHandler->delete($block);
                 }

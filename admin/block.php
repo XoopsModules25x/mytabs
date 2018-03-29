@@ -75,7 +75,7 @@ switch ($op) {
         xoops_cp_header();
         mytabs_adminmenu(0);
 
-        if ('new' == $op) {
+        if ('new' === $op) {
             $block = $pageblockHandler->create();
             $block->setVar('pageid', $_REQUEST['pageid']);
             $block->setVar('tabid', $_POST['tabid']);
