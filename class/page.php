@@ -37,7 +37,7 @@ class MytabsPage extends XoopsObject
     public function getForm()
     {
         require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
-        $form = new MytabsPageForm('Page', 'pageform', 'page.php');
+        $form = new MytabspageForm('Page', 'pageform', 'page.php');
         $form->createElements($this);
 
         return $form;
