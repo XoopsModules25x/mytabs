@@ -27,8 +27,8 @@ $pageHandler      = xoops_getModuleHandler('page');
 
 $moduleHandler = xoops_getHandler('module');
 
-if (isset($_REQUEST['pageid'])) {
-    $pageid = (int)$_REQUEST['pageid'];
+if (\Xmf\Request::hasVar('pageid', 'REQUEST')) {
+ $pageid = \Xmf\Request::getInt('pageid', 0, 'REQUEST');
 } else {
     $criteria = new \CriteriaCompo();
     $criteria->setSort('pagetitle');
