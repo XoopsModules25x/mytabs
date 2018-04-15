@@ -16,7 +16,7 @@
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
  */
-class MytabsTab extends XoopsObject
+class MytabsTab extends \XoopsObject
 {
     /**
      * constructor
@@ -124,7 +124,7 @@ class MytabsTab extends XoopsObject
     }
 }
 
-class MytabsTabHandler extends XoopsPersistableObjectHandler
+class MytabsTabHandler extends \XoopsPersistableObjectHandler
 {
     /**
      * constructor

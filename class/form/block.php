@@ -21,7 +21,7 @@
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
-class MytabsBlockForm extends XoopsThemeForm
+class MytabsBlockForm extends \XoopsThemeForm
 {
     public function createElements($target)
     {

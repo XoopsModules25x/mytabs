@@ -18,7 +18,7 @@
  */
 
 require_once __DIR__ . '/header.php';
-// require_once __DIR__ . '/../class/about.php';
+// require_once  dirname(__DIR__) . '/class/about.php';
 
 xoops_cp_header();
 

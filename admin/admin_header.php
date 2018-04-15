@@ -17,9 +17,9 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
-require_once __DIR__ . '/../../../include/cp_header.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/../include/functions.php';
+require_once  dirname(__DIR__) . '/include/functions.php';
 
 global $xoopsModule;
 $pathIcon16 = \Xmf\Module\Admin::iconUrl('', 16);
@@ -31,8 +31,8 @@ require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
 $myts = \MyTextSanitizer::getInstance();
 
 if ($xoopsUser) {
-    $modulepermHandler = xoops_getHandler('groupperm');
-    if (!$modulepermHandler->checkRight('module_admin', $xoopsModule->getVar('mid'), $xoopsUser->getGroups())) {
+    $grouppermHandler = xoops_getHandler('groupperm');
+    if (!$grouppermHandler->checkRight('module_admin', $xoopsModule->getVar('mid'), $xoopsUser->getGroups())) {
         redirect_header(XOOPS_URL, 1, _NOPERM);
     }
 } else {

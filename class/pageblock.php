@@ -18,7 +18,7 @@
  */
 // defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
-class MytabsPageBlock extends XoopsObject
+class MytabsPageBlock extends \XoopsObject
 {
     public $block;
 
@@ -182,7 +182,7 @@ class MytabsPageBlock extends XoopsObject
     }
 }
 
-class MytabsPageBlockHandler extends XoopsPersistableObjectHandler
+class MytabsPageBlockHandler extends \XoopsPersistableObjectHandler
 {
     /**
      * constructor

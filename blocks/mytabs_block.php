@@ -146,7 +146,7 @@ function b_mytabs_block_edit($options)
     $form .= '<b>' . _MB_MYTABS_HEIGHT . "</b>&nbsp;<input type='text' name='options[2]' value='" . $options[2] . "'>&nbsp;&nbsp;<i>" . _MB_MYTABS_HEIGHT_DSC . '</i><br><br>';
 
     require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-    $menus = XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/modules/mytabs/menus/', '');
+    $menus = \XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/modules/mytabs/menus/', '');
     $form  .= '<b>' . _MB_MYTABS_CLASS . "</b>&nbsp;<select name='options[3]'>";
     foreach ($menus as $menu) {
         if (file_exists(XOOPS_ROOT_PATH . '/modules/mytabs/menus/' . $menu . '/style.css')) {
