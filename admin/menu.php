@@ -19,8 +19,9 @@
 
 use XoopsModules\Mytabs;
 
-// require_once  dirname(__DIR__) . '/class/Helper.php';
 //require_once  dirname(__DIR__) . '/include/common.php';
+
+/** @var Mytabs\Helper $helper */
 $helper = Mytabs\Helper::getInstance();
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');

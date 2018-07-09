@@ -19,13 +19,13 @@
 
 require_once __DIR__ . '/admin_header.php';
 
-if (isset($_REQUEST['op'])) {
+if (\Xmf\Request::hasVar('op', 'REQUEST')) {
     $op = $_REQUEST['op'];
 } else {
     redirect_header('main.php', 1, _NOPERM);
 }
 
-$pageHandler = xoops_getModuleHandler('page');
+$pageHandler = new XoopsModules\Mytabs\PageHandler();
 
 switch ($op) {
     case 'save':
@@ -66,14 +66,14 @@ switch ($op) {
 
     case 'delete':
         $obj = $pageHandler->get($_REQUEST['pageid']);
-        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
+        if (\Xmf\Request::hasVar('ok', 'REQUEST') && 1 == $_REQUEST['ok']) {
             if ($pageHandler->delete($obj)) {
-                $tabHandler = xoops_getModuleHandler('tab');
+                $tabHandler = new XoopsModules\Mytabs\TabHandler();
                 $tabs       = $tabHandler->getObjects(new \Criteria('tabpageid', $_REQUEST['pageid']));
                 foreach ($tabs as $tab) {
                     $tabHandler->delete($tab);
                 }
-                $pageblockHandler = xoops_getModuleHandler('pageblock');
+                $pageblockHandler = new XoopsModules\Mytabs\PageBlockHandler();
                 $blocks           = $pageblockHandler->getObjects(new \Criteria('pageid', $_REQUEST['pageid']));
                 foreach ($blocks as $block) {
                     $pageblockHandler->delete($block);

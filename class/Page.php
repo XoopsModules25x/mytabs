@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -16,9 +17,16 @@
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
  */
+
+use XoopsModules\Mytabs;
+
 // defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
-class MytabsPage extends \XoopsObject
+/**
+ * Class Page
+ * @package XoopsModules\Mytabs
+ */
+class Page extends \XoopsObject
 {
     /**
      * constructor
@@ -32,26 +40,14 @@ class MytabsPage extends \XoopsObject
     /**
      * Get the form for adding or editing pages
      *
-     * @return MytabsPageForm
+     * @return Mytabs\Form\PageForm
      */
     public function getForm()
     {
-        require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
-        $form = new MytabspageForm('Page', 'pageform', 'page.php');
+//        require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/page.php';
+        $form = new Mytabs\Form\PageForm('Page', 'pageform', 'page.php');
         $form->createElements($this);
 
         return $form;
-    }
-}
-
-class MytabsPageHandler extends \XoopsPersistableObjectHandler
-{
-    /**
-     * constructor
-     * @param XoopsDatabase $db
-     */
-    public function __construct(\XoopsDatabase $db)
-    {
-        parent::__construct($db, 'mytabs_page', 'MytabsPage', 'pageid', 'pagetitle');
     }
 }

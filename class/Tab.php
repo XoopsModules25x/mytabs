@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -9,6 +10,8 @@
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
+use XoopsModules\Mytabs;
+
 /**
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
@@ -16,7 +19,7 @@
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
  */
-class MytabsTab extends \XoopsObject
+class Tab extends \XoopsObject
 {
     /**
      * constructor
@@ -52,17 +55,20 @@ class MytabsTab extends \XoopsObject
     /**
      * Get the form for adding or editing tabs
      *
-     * @return MytabsTabForm
+     * @return Mytabs\Form\TabForm
      */
     public function getForm()
     {
-        require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/tab.php';
-        $form = new MytabsTabForm('Tab', 'tabform', 'tab.php');
+//        require_once XOOPS_ROOT_PATH . '/modules/mytabs/class/form/tab.php';
+        $form = new Mytabs\Form\TabForm('Tab', 'tabform', 'tab.php');
         $form->createElements($this);
 
         return $form;
     }
 
+    /**
+     * @return string
+     */
     public function getTabTitle()
     {
         $title = $this->getVar('tabtitle');
@@ -102,6 +108,9 @@ class MytabsTab extends \XoopsObject
         return trim($title);
     }
 
+    /**
+     * @return mixed|null|string|string[]
+     */
     public function getTabLink()
     {
         $link = $this->getVar('tablink');
@@ -121,17 +130,5 @@ class MytabsTab extends \XoopsObject
         }
 
         return $link;
-    }
-}
-
-class MytabsTabHandler extends \XoopsPersistableObjectHandler
-{
-    /**
-     * constructor
-     * @param XoopsDatabase $db
-     */
-    public function __construct(\XoopsDatabase $db)
-    {
-        parent::__construct($db, 'mytabs_tab', 'MytabsTab', 'tabid', 'tabtitle');
     }
 }

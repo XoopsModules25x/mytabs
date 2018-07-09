@@ -28,7 +28,7 @@ function mytabs_blockShow($pageid, $tabid, $placement = '', $remove = '')
     $block     = [];
     $visblocks = [];
 
-    $blocksHandler = xoops_getModuleHandler('pageblock', 'mytabs');
+    $blocksHandler = new XoopsModules\Mytabs\PageBlockHandler(); // xoops_getModuleHandler('pageblock', 'mytabs');
     $blocks        = $blocksHandler->getBlocks($pageid, $tabid, $placement, $remove);
 
     $groups = $GLOBALS['xoopsUser'] ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];

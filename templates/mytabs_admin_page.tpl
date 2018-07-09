@@ -24,10 +24,10 @@
             <form action="main.php" method="post" onsubmit="return confirmIfDelete(this);">
                 <{securityToken}><{*//mb*}>
                 <div style="clear:both;">
-                    <table style="border: 1px solid black; border-collapse: collapse; padding: 4px; margin:1px; width:100%;">
+                    <table style="border: 1px solid #000000; border-collapse: collapse; padding: 4px; margin:1px; width:100%;">
                         <tr>
                             <{foreach from=$tabs key=k item=tab}>
-                                <td style="border: 1px solid black; padding: 4px; margin: 1px; vertical-align: top;">
+                                <td style="border: 1px solid #000000; padding: 4px; margin: 1px; vertical-align: top;">
                                     <div class="flexblock"
                                          style="background-color: <{if $tab.visible}>#afa<{/if}><{if $tab.timebased}>#ffa<{/if}><{if $tab.unvisible}>#faa<{/if}>;">
                                         <div style="background-color: #ccc; padding-left: 6px; cursor: pointer;"
@@ -74,15 +74,15 @@
                         <legend><{$smarty.const._AM_MYTABS_COLOR_LEGEND}></legend>
                         <table>
                             <tr>
-                                <td style="background: #afa; border: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td style="background: #afa; border: 1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><{$smarty.const._AM_MYTABS_COLOR_LEGEND_VISIBLE}></td>
                             </tr>
                             <tr>
-                                <td style="background: #ffa; border: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td style="background: #ffa; border: 1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><{$smarty.const._AM_MYTABS_COLOR_LEGEND_TIME_BASED}></td>
                             </tr>
                             <tr>
-                                <td style="background: #faa; border: 1px solid black;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td style="background: #faa; border: 1px solid #000000;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><{$smarty.const._AM_MYTABS_COLOR_LEGEND_NOT_VISIBLE}></td>
                             </tr>
                         </table>

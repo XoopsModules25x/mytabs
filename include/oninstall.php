@@ -30,7 +30,7 @@ use XoopsModules\Mytabs;
  */
 function xoops_module_pre_install_mytabs(\XoopsModule $module)
 {
-    include  dirname(__DIR__) . '/preloads/autoloader.php';
+    require_once dirname(__DIR__) . '/preloads/autoloader.php';
     /** @var Mytabs\Utility $utility */
     $utility = new \XoopsModules\Mytabs\Utility();
     $xoopsSuccess = $utility::checkVerXoops($module);
@@ -60,7 +60,8 @@ function xoops_module_install_mytabs(\XoopsModule $module)
 
     $moduleDirName = basename(dirname(__DIR__));
 
-    $helper       = Mytabs\Helper::getInstance();
+    /** @var Mytabs\Helper $helper */
+    $helper = Mytabs\Helper::getInstance();
     $utility      = new Mytabs\Utility();
     $configurator = new Mytabs\Common\Configurator();
     // Load language files

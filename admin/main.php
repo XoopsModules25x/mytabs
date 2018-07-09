@@ -17,13 +17,18 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Mytabs;
+
 //require_once __DIR__ . '/header.php';
 //require_once __DIR__ . '/admin_header.php';
 require_once __DIR__ . '/admin_header.php';
 
-$pageblockHandler = xoops_getModuleHandler('pageblock');
-$tabHandler       = xoops_getModuleHandler('tab');
-$pageHandler      = xoops_getModuleHandler('page');
+/** @var \XoopsDatabase $db */
+$db      = \XoopsDatabaseFactory::getDatabaseConnection();
+
+$pageblockHandler = new Mytabs\PageBlockHandler($db);
+$tabHandler       = new Mytabs\TabHandler($db);
+$pageHandler      = new Mytabs\PageHandler($db);
 
 $moduleHandler = xoops_getHandler('module');
 
@@ -43,21 +48,21 @@ $page = $pageHandler->get($pageid);
 if (count($_POST) > 0) {
     switch ($_POST['doaction']) {
         case 'setpriorities':
-            if (isset($_POST['pri'])) {
+            if (\Xmf\Request::hasVar('pri', 'POST')) {
                 foreach ($_POST['pri'] as $id => $priority) {
                     $block = $pageblockHandler->get($id);
                     $block->setVar('priority', $priority);
                     $pageblockHandler->insert($block);
                 }
             }
-            if (isset($_POST['tabpri'])) {
+            if (\Xmf\Request::hasVar('tabpri', 'POST')) {
                 foreach ($_POST['tabpri'] as $id => $priority) {
                     $tab = $tabHandler->get($id);
                     $tab->setVar('tabpriority', $priority);
                     $tabHandler->insert($tab);
                 }
             }
-            if (isset($_POST['place'])) {
+            if (\Xmf\Request::hasVar('place', 'POST')) {
                 foreach ($_POST['place'] as $id => $placement) {
                     $block = $pageblockHandler->get($id);
                     $block->setVar('placement', $placement);
@@ -66,13 +71,13 @@ if (count($_POST) > 0) {
             }
             break;
         case 'delete':
-            if (isset($_POST['markedblocks'])) {
+            if (\Xmf\Request::hasVar('markedblocks', 'POST')) {
                 foreach ($_POST['markedblocks'] as $id) {
                     $block = $pageblockHandler->get($id);
                     $pageblockHandler->delete($block);
                 }
             }
-            if (isset($_POST['markedtabs'])) {
+            if (\Xmf\Request::hasVar('markedtabs', 'POST')) {
                 foreach ($_POST['markedtabs'] as $id) {
                     $tab = $tabHandler->get($id);
                     $tabHandler->delete($tab);
@@ -92,7 +97,7 @@ $adminObject->displayNavigation(basename(__FILE__));
 $blocks          = $pageblockHandler->getBlocks($pageid, 0, '', '', false);
 $allblocks       = $pageblockHandler->getAllBlocks();
 $allcustomblocks = $pageblockHandler->getAllCustomBlocks();
-$allblocks       = $allblocks + $allcustomblocks;
+$allblocks       += $allcustomblocks;
 
 $has_tabs   = false;
 $tabs_array = [];

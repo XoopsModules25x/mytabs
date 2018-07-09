@@ -7,4 +7,4 @@
     <br style="clear: left;">
 </div>
 
-<div style="border:1px solid gray; padding: 5px; margin-bottom:1em;">
+<div style="border:1px solid #808080; padding: 5px; margin-bottom:1em;">

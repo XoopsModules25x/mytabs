@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -24,7 +25,7 @@
  * Class About is a simple class that lets you build an about page
  * @author The SmartFactory <www.smartfactory.ca>
  */
-class MytabsAbout
+class About
 {
     public $_lang_aboutTitle;
     public $_lang_author_info;
@@ -48,6 +49,10 @@ class MytabsAbout
     public $_lang_by;
     public $_tpl;
 
+    /**
+     * About constructor.
+     * @param string $aboutTitle
+     */
     public function __construct($aboutTitle = 'About')
     {
         xoops_loadLanguage('about', 'mytabs');
@@ -71,6 +76,10 @@ class MytabsAbout
         $this->_lang_version_history       = _AB_MYTABS_VERSION_HISTORY;
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     */
     public function sanitize($value)
     {
         $myts = \MyTextSanitizer::getInstance();
@@ -81,7 +90,7 @@ class MytabsAbout
     public function render()
     {
         global $xoopsModule;
-        /** @var XoopsModuleHandler $moduleHandler */
+        /** @var \XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $versioninfo   = $moduleHandler->get($xoopsModule->getVar('mid'));
 

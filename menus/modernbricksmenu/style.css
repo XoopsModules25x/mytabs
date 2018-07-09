@@ -26,17 +26,17 @@
 .modernbricksmenu-menu a {
     float: left;
     display: block;
-    color: white !important;
+    color: #ffffff !important;
     margin: 0 1px 0 0 !important; /*Margin between each menu item*/
     padding: 5px 10px !important;
     text-decoration: none !important;
     letter-spacing: 1px;
-    background-color: black !important; /*Default menu color*/
-    border-bottom: 1px solid white;
+    background-color: #000000 !important; /*Default menu color*/
+    border-bottom: 1px solid #ffffff;
 }
 
 .modernbricksmenu-menu a:hover {
-    background-color: gray !important; /*Menu hover bgcolor*/
+    background-color: #808080 !important; /*Menu hover bgcolor*/
 }
 
 .modernbricksmenu-menu a.tabs-selected { /*currently selected tab*/

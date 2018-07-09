@@ -19,13 +19,13 @@
 
 require_once __DIR__ . '/admin_header.php';
 
-if (isset($_REQUEST['op'])) {
+if (\Xmf\Request::hasVar('op', 'REQUEST')) {
     $op = $_REQUEST['op'];
 } else {
     redirect_header('main.php', 1, _NOPERM);
 }
 
-$tabHandler = xoops_getModuleHandler('tab');
+$tabHandler = new XoopsModules\Mytabs\TabHandler();
 
 switch ($op) {
     case 'save':
@@ -71,7 +71,7 @@ switch ($op) {
         echo '<a href="main.php">' . _AM_MYTABS_HOME . '</a>&nbsp;';
 
         if ($pageid > 0) {
-            $pageHandler = xoops_getModuleHandler('page');
+            $pageHandler = new XoopsModules\Mytabs\PageHandler();
             $page        = $pageHandler->get($pageid);
             echo '&raquo;&nbsp;';
             echo '<a href="main.php?pageid=' . $pageid . '">' . $page->getVar('pagetitle') . '</a>';
@@ -85,9 +85,9 @@ switch ($op) {
 
     case 'delete':
         $obj = $tabHandler->get($_REQUEST['tabid']);
-        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
+        if (\Xmf\Request::hasVar('ok', 'REQUEST') && 1 == $_REQUEST['ok']) {
             if ($tabHandler->delete($obj)) {
-                $pageblockHandler = xoops_getModuleHandler('pageblock');
+                $pageblockHandler = new XoopsModules\Mytabs\PageBlockHandler();
                 $blocks           = $pageblockHandler->getObjects(new \Criteria('tabid', $_REQUEST['tabid']));
                 foreach ($blocks as $block) {
                     $pageblockHandler->delete($block);

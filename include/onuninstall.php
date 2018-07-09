@@ -36,7 +36,8 @@ function xoops_module_uninstall_tabs(\XoopsModule $module)
 
     $moduleDirName      = basename(dirname(__DIR__));
     $moduleDirNameUpper = strtoupper($moduleDirName);
-    $helper             = Mytabs\Helper::getInstance();
+    /** @var Mytabs\Helper $helper */
+    $helper = Mytabs\Helper::getInstance();
 
     /** @var Mytabs\Utility $utility */
     $utility = new Mytabs\Utility();

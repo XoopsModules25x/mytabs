@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -16,15 +17,16 @@
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
  */
+// defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
-
-use XoopsModules\Mytabs;
-
-require_once __DIR__ . '/header.php';
-// require_once  dirname(__DIR__) . '/class/about.php';
-
-xoops_cp_header();
-
-$aboutObj = new Mytabs\About();
-$aboutObj->render();
-xoops_cp_footer();
+class PageHandler extends \XoopsPersistableObjectHandler
+{
+    /**
+     * constructor
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db = null)
+    {
+        parent::__construct($db, 'mytabs_page', Page::class, 'pageid', 'pagetitle');
+    }
+}

@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -17,14 +18,14 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
-
-use XoopsModules\Mytabs;
-
-require_once __DIR__ . '/header.php';
-// require_once  dirname(__DIR__) . '/class/about.php';
-
-xoops_cp_header();
-
-$aboutObj = new Mytabs\About();
-$aboutObj->render();
-xoops_cp_footer();
+class TabHandler extends \XoopsPersistableObjectHandler
+{
+    /**
+     * constructor
+     * @param \XoopsDatabase $db
+     */
+    public function __construct(\XoopsDatabase $db = null)
+    {
+        parent::__construct($db, 'mytabs_tab', Tab::class, 'tabid', 'tabtitle');
+    }
+}

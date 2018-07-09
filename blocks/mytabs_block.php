@@ -21,6 +21,10 @@
 
 // defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
+/**
+ * @param $options
+ * @return array
+ */
 function b_mytabs_block_show($options)
 {
     global $xoTheme, $xoopsTpl;
@@ -37,7 +41,7 @@ function b_mytabs_block_show($options)
 
     require_once XOOPS_ROOT_PATH . '/modules/mytabs/include/functions.php';
 
-    $tabHandler = xoops_getModuleHandler('tab', 'mytabs');
+    $tabHandler = new XoopsModules\Mytabs\TabHandler();
     $criteria   = new \Criteria('tabpageid', $pageid);
     $criteria->setSort('tabpriority');
     $criteria->setOrder('ASC');
@@ -116,6 +120,10 @@ function b_mytabs_block_show($options)
     return $block;
 }
 
+/**
+ * @param $options
+ * @return string
+ */
 function b_mytabs_block_edit($options)
 {
     if (!$options[6] || (isset($_GET['op']) && 'clone' === $_GET['op'])) {
@@ -124,7 +132,7 @@ function b_mytabs_block_edit($options)
     $criteria = new \CriteriaCompo();
     $criteria->setSort('pagetitle');
     $criteria->setOrder('ASC');
-    $pageHandler = xoops_getModuleHandler('page', 'mytabs');
+    $pageHandler = new XoopsModules\Mytabs\PageHandler();
     $pages       = $pageHandler->getObjects($criteria);
     if (!$pages) {
         $form = "<a href='" . XOOPS_URL . "/modules/mytabs/admin/main.php'>" . _MB_MYTABS_CREATEPAGEFIRST . '</a>';

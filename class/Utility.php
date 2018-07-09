@@ -1,7 +1,5 @@
 <?php namespace XoopsModules\Mytabs;
 
-use Xmf\Request;
-use XoopsModules\Mytabs;
 use XoopsModules\Mytabs\Common;
 
 /**

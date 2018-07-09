@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs\Form;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -17,12 +18,21 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Mytabs;
+
 // defined('XOOPS_ROOT_PATH') || die("XOOPS root path not defined");
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
-class MytabsBlockForm extends \XoopsThemeForm
+/**
+ * Class BlockForm
+ * @package XoopsModules\Mytabs\Form
+ */
+class BlockForm extends \XoopsThemeForm
 {
+    /**
+     * @param $target
+     */
     public function createElements($target)
     {
         if ($target->isNew()) {
@@ -47,7 +57,7 @@ class MytabsBlockForm extends \XoopsThemeForm
         $this->addElement($always_select);
 
         $placement  = new \XoopsFormSelect(_AM_MYTABS_PLACEMENT . ':', 'tabid', $target->getVar('tabid', 'e'));
-        $tabHandler = xoops_getModuleHandler('tab');
+        $tabHandler = new Mytabs\TabHandler();
         $tabs       = $tabHandler->getObjects(new \Criteria('tabpageid', $target->getVar('pageid')));
         foreach ($tabs as $tab) {
             $placement->addOption($tab->getVar('tabid'), $tab->getVar('tabtitle'));

@@ -1,4 +1,5 @@
-<?php
+<?php namespace XoopsModules\Mytabs\Form;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -21,8 +22,15 @@
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
-class MytabsTabForm extends \XoopsThemeForm
+/**
+ * Class TabForm
+ * @package XoopsModules\Mytabs\Form
+ */
+class TabForm extends \XoopsThemeForm
 {
+    /**
+     * @param $target
+     */
     public function createElements($target)
     {
         $this->addElement(new \XoopsFormText(_AM_MYTABS_TITLE, 'tabtitle', 35, 255, $target->getVar('tabtitle', 'e')));

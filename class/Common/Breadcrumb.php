@@ -18,7 +18,7 @@
  * @package     mytabs
  *
  * Example:
- * $breadcrumb = new PedigreeBreadcrumb();
+ * $breadcrumb = new Breadcrumb();
  * $breadcrumb->addLink( 'bread 1', 'index1.php' );
  * $breadcrumb->addLink( 'bread 2', '' );
  * $breadcrumb->addLink( 'bread 3', 'index3.php' );
@@ -39,7 +39,7 @@ class Breadcrumb
      */
     public function __construct()
     {
-        $this->dirname = basename(dirname(__DIR__));
+        $this->dirname = basename(dirname(dirname(__DIR__)));
     }
 
     /**

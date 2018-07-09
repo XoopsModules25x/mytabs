@@ -21,12 +21,22 @@ require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 require_once __DIR__ . '/functions.php';
 require_once  dirname(__DIR__) . '/include/functions.php';
 
-global $xoopsModule;
-$pathIcon16 = \Xmf\Module\Admin::iconUrl('', 16);
-$pathIcon16 = \Xmf\Module\Admin::iconUrl('', 32);
+require  dirname(__DIR__) . '/include/common.php';
 
-$xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
-require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
+$moduleDirName = basename(dirname(__DIR__));
+/** @var \XoopsModules\Mytabs\Helper $helper */
+$helper = \XoopsModules\Mytabs\Helper::getInstance();
+
+/** @var Xmf\Module\Admin $adminObject */
+$adminObject = \Xmf\Module\Admin::getInstance();
+
+// Load language files
+$helper->loadLanguage('admin');
+$helper->loadLanguage('modinfo');
+$helper->loadLanguage('common');
+
+global $xoopsModule;
+
 
 $myts = \MyTextSanitizer::getInstance();
 
@@ -47,7 +57,4 @@ if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
 $xoopsTpl->assign('pathImageIcon', $pathIcon16);
 //xoops_cp_header();
 
-//Load languages
-xoops_loadLanguage('admin', $xoopsModule->getVar('dirname'));
-xoops_loadLanguage('modinfo', $xoopsModule->getVar('dirname'));
-xoops_loadLanguage('main', $xoopsModule->getVar('dirname'));
+
