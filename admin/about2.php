@@ -10,19 +10,21 @@
  */
 
 /**
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: about.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-require dirname(__FILE__) . '/header.php';
-include_once dirname(dirname(__FILE__)) . '/class/about.php';
+
+use XoopsModules\Mytabs;
+
+require_once __DIR__ . '/header.php';
+// require_once  dirname(__DIR__) . '/class/about.php';
 
 xoops_cp_header();
 
-$aboutObj = new MytabsAbout();
+$aboutObj = new Mytabs\About();
 $aboutObj->render();
 xoops_cp_footer();

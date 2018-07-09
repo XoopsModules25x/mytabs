@@ -10,112 +10,115 @@
  */
 
 /**
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: main.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-//require dirname(__FILE__) . '/header.php';
-//include_once 'admin_header.php';
-require dirname(__FILE__) . '/admin_header.php';
+use XoopsModules\Mytabs;
 
-$pageblock_handler = xoops_getmodulehandler('pageblock');
-$tab_handler = xoops_getmodulehandler('tab');
-$page_handler = xoops_getmodulehandler('page');
+//require_once __DIR__ . '/header.php';
+//require_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 
-$module_handler = xoops_gethandler('module');
+/** @var \XoopsDatabase $db */
+$db      = \XoopsDatabaseFactory::getDatabaseConnection();
 
-if (isset($_REQUEST['pageid'])){
-    $pageid = intval($_REQUEST['pageid']);
+$pageblockHandler = new Mytabs\PageBlockHandler($db);
+$tabHandler       = new Mytabs\TabHandler($db);
+$pageHandler      = new Mytabs\PageHandler($db);
+
+$moduleHandler = xoops_getHandler('module');
+
+if (\Xmf\Request::hasVar('pageid', 'REQUEST')) {
+ $pageid = \Xmf\Request::getInt('pageid', 0, 'REQUEST');
 } else {
-    $criteria = new CriteriaCompo();
+    $criteria = new \CriteriaCompo();
     $criteria->setSort('pagetitle');
     $criteria->setOrder('DESC');
     $criteria->setLimit(1);
-    $page = $page_handler->getObjects($criteria);
+    $page   = $pageHandler->getObjects($criteria);
     $pageid = !empty($page) ? $page[0]->getVar('pageid') : 0;
 }
 
-$page = $page_handler->get($pageid);
+$page = $pageHandler->get($pageid);
 
-if (sizeof($_POST)>0)
-{
-    switch($_POST['doaction']) {
+if (count($_POST) > 0) {
+    switch ($_POST['doaction']) {
         case 'setpriorities':
-            if (isset($_POST['pri'])) {
+            if (\Xmf\Request::hasVar('pri', 'POST')) {
                 foreach ($_POST['pri'] as $id => $priority) {
-                    $block = $pageblock_handler->get($id);
+                    $block = $pageblockHandler->get($id);
                     $block->setVar('priority', $priority);
-                    $pageblock_handler->insert($block);
+                    $pageblockHandler->insert($block);
                 }
             }
-            if (isset($_POST['tabpri'])) {
+            if (\Xmf\Request::hasVar('tabpri', 'POST')) {
                 foreach ($_POST['tabpri'] as $id => $priority) {
-                    $tab = $tab_handler->get($id);
+                    $tab = $tabHandler->get($id);
                     $tab->setVar('tabpriority', $priority);
-                    $tab_handler->insert($tab);
+                    $tabHandler->insert($tab);
                 }
             }
-            if (isset($_POST['place'])) {
+            if (\Xmf\Request::hasVar('place', 'POST')) {
                 foreach ($_POST['place'] as $id => $placement) {
-                    $block = $pageblock_handler->get($id);
+                    $block = $pageblockHandler->get($id);
                     $block->setVar('placement', $placement);
-                    $pageblock_handler->insert($block);
+                    $pageblockHandler->insert($block);
                 }
             }
             break;
         case 'delete':
-            if (isset($_POST['markedblocks'])){
+            if (\Xmf\Request::hasVar('markedblocks', 'POST')) {
                 foreach ($_POST['markedblocks'] as $id) {
-                    $block = $pageblock_handler->get($id);
-                    $pageblock_handler->delete($block);
+                    $block = $pageblockHandler->get($id);
+                    $pageblockHandler->delete($block);
                 }
             }
-            if (isset($_POST['markedtabs'])){
+            if (\Xmf\Request::hasVar('markedtabs', 'POST')) {
                 foreach ($_POST['markedtabs'] as $id) {
-                    $tab = $tab_handler->get($id);
-                    $tab_handler->delete($tab);
-                    $blocks = $pageblock_handler->getObjects(new Criteria('tabid', $id));
+                    $tab = $tabHandler->get($id);
+                    $tabHandler->delete($tab);
+                    $blocks = $pageblockHandler->getObjects(new \Criteria('tabid', $id));
                     foreach ($blocks as $block) {
-                        $pageblock_handler->delete($block);
+                        $pageblockHandler->delete($block);
                     }
                 }
             }
             break;
     }
 }
-$indexAdmin = new ModuleAdmin();
+$adminObject = \Xmf\Module\Admin::getInstance();
 xoops_cp_header();
-echo $indexAdmin->addNavigation('main.php');
+$adminObject->displayNavigation(basename(__FILE__));
 
-$blocks = $pageblock_handler->getBlocks($pageid, 0, '','', false);
-$allblocks = $pageblock_handler->getAllBlocks();
-$allcustomblocks = $pageblock_handler->getAllCustomBlocks();
-$allblocks = $allblocks + $allcustomblocks;
+$blocks          = $pageblockHandler->getBlocks($pageid, 0, '', '', false);
+$allblocks       = $pageblockHandler->getAllBlocks();
+$allcustomblocks = $pageblockHandler->getAllCustomBlocks();
+$allblocks       += $allcustomblocks;
 
-$has_tabs = false;
-$tabs_array = array();
-$criteria = new Criteria('tabpageid', $pageid);
+$has_tabs   = false;
+$tabs_array = [];
+$criteria   = new \Criteria('tabpageid', $pageid);
 $criteria->setSort('tabpriority');
 $criteria->setOrder('ASC');
-$tabs = $tab_handler->getObjects($criteria);
+$tabs = $tabHandler->getObjects($criteria);
 foreach ($tabs as $tab) {
-    $tabs_array[$tab->getVar('tabid')]['title'] = $tab->getVar('tabtitle');
+    $tabs_array[$tab->getVar('tabid')]['title']    = $tab->getVar('tabtitle');
     $tabs_array[$tab->getVar('tabid')]['priority'] = $tab->getVar('tabpriority');
-    $tabs_array[$tab->getVar('tabid')]['groups'] = $tab->getVar('tabgroups');
-    $tabs_array[$tab->getVar('tabid')]['note'] = $tab->getVar('tabnote');
-    $tabs_array[$tab->getVar('tabid')]['link'] = $tab->getVar('tablink');
-    $tabs_array[$tab->getVar('tabid')]['rev'] = $tab->getVar('tabrev');
+    $tabs_array[$tab->getVar('tabid')]['groups']   = $tab->getVar('tabgroups');
+    $tabs_array[$tab->getVar('tabid')]['note']     = $tab->getVar('tabnote');
+    $tabs_array[$tab->getVar('tabid')]['link']     = $tab->getVar('tablink');
+    $tabs_array[$tab->getVar('tabid')]['rev']      = $tab->getVar('tabrev');
 
     $showalways = $tab->getVar('tabshowalways');
-    if ($showalways == 'no') {
+    if ('no' === $showalways) {
         $tabs_array[$tab->getVar('tabid')]['unvisible'] = true;
-    } else if ($showalways == 'yes') {
+    } elseif ('yes' === $showalways) {
         $tabs_array[$tab->getVar('tabid')]['visible'] = true;
-    } else if ($showalways == 'time') {
+    } elseif ('time' === $showalways) {
         $check = $tab->isVisible();
         if ($check) {
             $tabs_array[$tab->getVar('tabid')]['timebased'] = true;
@@ -126,42 +129,48 @@ foreach ($tabs as $tab) {
     $has_tabs = true;
 }
 
-$has_blocks = false;
-$has_left_blocks = false;
+$has_blocks        = false;
+$has_left_blocks   = false;
 $has_center_blocks = false;
-$has_right_blocks = false;
+$has_right_blocks  = false;
 foreach (array_keys($blocks) as $tabid) {
     foreach ($blocks[$tabid] as $block) {
         $blocks_array[$tabid][] = $block->toArray();
-        $has_blocks = true;
-        $block_placement = $block->getVar('placement');
-        if ($block_placement = 'left') $has_left_blocks = true;
-        if ($block_placement = 'center') $has_center_blocks = true;
-        if ($block_placement = 'right') $has_right_blocks = true;
+        $has_blocks             = true;
+        $block_placement        = $block->getVar('placement');
+        if ($block_placement = 'left') {
+            $has_left_blocks = true;
+        }
+        if ($block_placement = 'center') {
+            $has_center_blocks = true;
+        }
+        if ($block_placement = 'right') {
+            $has_right_blocks = true;
+        }
     }
 }
 
 $has_pages = false;
-$criteria = new CriteriaCompo();
+$criteria  = new \CriteriaCompo();
 $criteria->setSort('pagetitle');
 $criteria->setOrder('ASC');
-$pagelist = $page_handler->getObjects($criteria, true);
+$pagelist = $pageHandler->getObjects($criteria, true);
 foreach (array_keys($pagelist) as $i) {
     $pages[$i] = $pagelist[$i]->getVar('pagetitle');
     $has_pages = true;
 }
 
 $has_placements = false;
-$placement = '<select name="tabid">';
-$tabs = $tab_handler->getObjects(new Criteria('tabpageid', $pageid), false);
+$placement      = '<select name="tabid">';
+$tabs           = $tabHandler->getObjects(new \Criteria('tabpageid', $pageid), false);
 foreach ($tabs as $tab) {
-    $placement .='<option value="' . $tab->getVar('tabid') . '">' . $tab->getVar('tabtitle') . '</option>';
+    $placement      .= '<option value="' . $tab->getVar('tabid') . '">' . $tab->getVar('tabtitle') . '</option>';
     $has_placements = true;
 }
-$placement .='</select>&nbsp;';
+$placement .= '</select>&nbsp;';
 
-$grouplist_handler = xoops_gethandler('group');
-$grouplist = $grouplist_handler->getObjects(null, true);
+$grouplistHandler = xoops_getHandler('group');
+$grouplist        = $grouplistHandler->getObjects(null, true);
 
 foreach (array_keys($grouplist) as $i) {
     $groups[$i] = $grouplist[$i]->getVar('name');
@@ -173,9 +182,9 @@ if ($page) {
 
 if ($has_blocks) {
     $xoopsTpl->assign('blocks', $blocks_array);
-    $xoopsTpl->assign('left_blocks',$has_left_blocks);
-    $xoopsTpl->assign('center_blocks',$has_center_blocks);
-    $xoopsTpl->assign('right_blocks',$has_right_blocks);
+    $xoopsTpl->assign('left_blocks', $has_left_blocks);
+    $xoopsTpl->assign('center_blocks', $has_center_blocks);
+    $xoopsTpl->assign('right_blocks', $has_right_blocks);
 }
 
 if ($has_tabs) {
@@ -194,7 +203,7 @@ $xoopsTpl->assign('pageid', $pageid);
 $xoopsTpl->assign('blocklist', $allblocks);
 $xoopsTpl->assign('groups', $groups);
 
-$xoopsTpl->display("db:mytabs_admin_page.html");
+$xoopsTpl->display('db:mytabs_admin_page.tpl');
 
-include "admin_footer.php";
+require_once __DIR__ . '/admin_footer.php';
 //xoops_cp_footer();

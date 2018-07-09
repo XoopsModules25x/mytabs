@@ -10,36 +10,37 @@
  */
 
 /**
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: menu.php 0 2009-11-14 18:47:04Z trabis $
  */
- 
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
 
-$dirname = basename(dirname(dirname(__FILE__)));
-$module_handler = xoops_gethandler('module');
-$module = $module_handler->getByDirname($dirname);
-$pathIcon32 = $module->getInfo('icons32');
+use XoopsModules\Mytabs;
 
-//xoops_loadLanguage('admin', $dirname);
+//require_once  dirname(__DIR__) . '/include/common.php';
 
-$adminmenu = array();
+/** @var Mytabs\Helper $helper */
+$helper = Mytabs\Helper::getInstance();
 
-$i = 1;
-$adminmenu[$i]["title"] = _MI_MYTABS_ADMMENU0;
-$adminmenu[$i]["link"] = 'admin/index.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/home.png';
+$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
 
-$i++;
-$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU1;
-$adminmenu[$i]['link'] = "admin/main.php";
-$adminmenu[$i]["icon"] = $pathIcon32.'/manage.png';
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU0,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png',
+];
 
-$i++;
-$adminmenu[$i]['title'] = _MI_MYTABS_ADMMENU2;
-$adminmenu[$i]['link'] = "admin/about.php";
-$adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU1,
+    'link'  => 'admin/main.php',
+    'icon'  => $pathIcon32 . '/manage.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_MYTABS_ADMMENU2,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
+];

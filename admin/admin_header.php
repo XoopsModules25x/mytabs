@@ -10,52 +10,51 @@
  */
 
 /**
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         Mytabs
  * @since           1.0
  * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: menu.php 0 2009-11-14 18:47:04Z trabis $
  */
 
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/include/cp_header.php';
-include_once dirname(__FILE__) . '/functions.php';
-include_once dirname(dirname(__FILE__)) . '/include/functions.php';
+require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once __DIR__ . '/functions.php';
+require_once  dirname(__DIR__) . '/include/functions.php';
 
-if ( file_exists($GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php'))){
-        include_once $GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php');
-        //return true;
-    }else{
-        redirect_header("../../../admin.php", 5, _AM_MODULEADMIN_MISSING, false);
-        //return false;
-    }
+require  dirname(__DIR__) . '/include/common.php';
+
+$moduleDirName = basename(dirname(__DIR__));
+/** @var \XoopsModules\Mytabs\Helper $helper */
+$helper = \XoopsModules\Mytabs\Helper::getInstance();
+
+/** @var Xmf\Module\Admin $adminObject */
+$adminObject = \Xmf\Module\Admin::getInstance();
+
+// Load language files
+$helper->loadLanguage('admin');
+$helper->loadLanguage('modinfo');
+$helper->loadLanguage('common');
 
 global $xoopsModule;
-$pathIcon16 = '../'.$xoopsModule->getInfo('icons16');
-$pathIcon32 = '../'.$xoopsModule->getInfo('icons32');
 
-$myts = MyTextSanitizer::getInstance();
+
+$myts = \MyTextSanitizer::getInstance();
 
 if ($xoopsUser) {
-    $moduleperm_handler =& xoops_gethandler('groupperm');
-    if (!$moduleperm_handler->checkRight('module_admin', $xoopsModule->getVar( 'mid' ), $xoopsUser->getGroups())) {
+    $grouppermHandler = xoops_getHandler('groupperm');
+    if (!$grouppermHandler->checkRight('module_admin', $xoopsModule->getVar('mid'), $xoopsUser->getGroups())) {
         redirect_header(XOOPS_URL, 1, _NOPERM);
-        exit();
     }
 } else {
-    redirect_header(XOOPS_URL . "/user.php", 1, _NOPERM);
-    exit();
+    redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-    include_once(XOOPS_ROOT_PATH."/class/template.php");
-    $xoopsTpl = new XoopsTpl();
+    require_once XOOPS_ROOT_PATH . '/class/template.php';
+    $xoopsTpl = new \XoopsTpl();
 }
 
 $xoopsTpl->assign('pathImageIcon', $pathIcon16);
 //xoops_cp_header();
 
-//Load languages
-xoops_loadLanguage('admin', $xoopsModule->getVar("dirname"));
-xoops_loadLanguage('modinfo', $xoopsModule->getVar("dirname"));
-xoops_loadLanguage('main', $xoopsModule->getVar("dirname"));
+
